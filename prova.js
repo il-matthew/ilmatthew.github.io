@@ -69,7 +69,7 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 
 }
 	
-	
+//scrivi il dado, passa il successvio per quanti scrivere dipende dalla stessa faccia del dado (potenza delle facce del dado)
 
 
 // create a function that calculates the number of success given a n° of dice rolled and condition of success
