@@ -9,9 +9,9 @@
 */
 
 //create a simple dice
-function Dice (commonFace, singleFace){
+function Dice(commonFace, singleFace) {
 	this.diceFaces = ["critical", commonFace, commonFace, singleFace, "support1", "support2"]
-	this.numCases = function(){
+	this.numCases = function(numberDices) {
 		return Math.pow(this.diceFaces.length, numberDices)
 	}
 }
@@ -19,56 +19,64 @@ function Dice (commonFace, singleFace){
 var attackDice = new Dice("smash", "fury");
 
 //create the defence dice
-var defenceDice =  new Dice("block", "dodge");
-
-/*
-function rollDice2(diceType, numRoll){
-	var diceRolls = [][]
-	for(i=0;i<diceType.numCases(numRoll){
-		for(j=0;j<diceType.diceFaces.length;j++){
-			diceRolls[i][j]
-		}
-	}
-}
-*/
-
-
-
+var defenceDice = new Dice("block", "dodge");
 
 //create a function that rolls the dice results and returns the number of results results
 function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 
 	//total possible results of the rolls of that number of dices
-	var totalPossibilites = diceTypeRolled.numCases(numberDicesRolled);
+	var numberTotalPossibilites = diceTypeRolled.numCases(numberDicesRolled);
 
 	//store the dice results
 	var diceResults = new Array();
 
-	
-	function rollDice(diceType, iteration, array) {
-		if (iteration == 1) {
-			//return the base case
-			for (i = 0; i < diceType.diceFaces.length; i++) {
-				array[i] = (diceType.diceFaces[i]);
-			}
-		} else {
-			//continue
-			for (i = 0; i < diceType.diceFaces.length; i++) {
+	var iteration = 0;
+	var rowToWrite = 0;
+	var diceFaceToWrite = new Array();
+	//lazy inizialization
+	for(i=0;i<numberTotalPossibilites;i++){
+		if (!diceFaceToWrite[i]){
+			diceFaceToWrite[i] = new Array();
+		}
+	}
+	 
 
-				array[][i] = diceType.diceFaces[i];
-				rollDice(diceType, iteration - 1, tempResult);
-			}
+	function rollDice(diceType, iteration, rowPointer) { //TODO insert carryon between operations
 
+		if (numberDicesRolled - iteration == 1) { //it's the last iteration, so it just writes the last dice
+			for (i = 0; i < diceType.diceFaces.length; i++) {
+				diceResults[rowPointer + i][iteration] = diceType.diceFaces[i];
+			}
+		}
+		else {
+			diceFaceToWrite[iteration] = 0;
+			
+			for (i = 0; i < diceType.diceFaces.length; i++) { //call the function for each face to write
+				var howManyRowsToWrite = diceType.numCases(numberDicesRolled - iteration - 1);
+				
+
+
+				for (j = 0; j < howManyRowsToWrite; j++) {
+					diceResults[rowPointer+j][iteration] = diceType.diceFaces[diceFaceToWrite];
+				}
+
+				rollDice(diceType, iteration +1, rowPointer + howManyRowsToWrite)
+				//richiamo la funzione
+
+				diceFaceToWrite[iteration]++;
+				rowPointer = rowPointer + howManyRowsToWrite;
+				
+			}
 		}
 	}
 	
-	
-	for (i = 0; i < numberDicesRolled; i++) {
-		rollDice(diceTypeRolled, numberDicesRolled, diceResults);
-	}
+	rollDice(diceTypeRolled, iteration, rowToWrite);
+	return diceResults
 
 }
-	
+
+
+
 //scrivi il dado, passa il successvio per quanti scrivere dipende dalla stessa faccia del dado (potenza delle facce del dado)
 
 
