@@ -21,6 +21,8 @@ var attackDice = new Dice("smash", "fury");
 //create the defence dice
 var defenceDice = new Dice("block", "dodge");
 
+
+
 //create a function that rolls the dice results and returns the number of results results
 function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 
@@ -35,17 +37,17 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 	var diceFaceToWrite = new Array();
 	//lazy inizialization
 	for(i=0;i<numberTotalPossibilites;i++){
-		if (!diceFaceToWrite[i]){
-			diceFaceToWrite[i] = new Array();
+		if (typeof diceResults[i] === 'undefined'){
+			diceResults[i] = new Array(numberDicesRolled);
 		}
 	}
-	 
-
+	
+	
 	function rollDice(diceType, iteration, rowPointer) { //TODO insert carryon between operations
 
 		if (numberDicesRolled - iteration == 1) { //it's the last iteration, so it just writes the last dice
 			for (i = 0; i < diceType.diceFaces.length; i++) {
-				diceResults[rowPointer + i][iteration] = diceType.diceFaces[i];
+				diceResults[rowPointer + i][iteration] = diceType.diceFaces;
 			}
 		}
 		else {
@@ -53,13 +55,12 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 			
 			for (i = 0; i < diceType.diceFaces.length; i++) { //call the function for each face to write
 				var howManyRowsToWrite = diceType.numCases(numberDicesRolled - iteration - 1);
-				
-
-
+			
 				for (j = 0; j < howManyRowsToWrite; j++) {
 					diceResults[rowPointer+j][iteration] = diceType.diceFaces[diceFaceToWrite];
 				}
 
+				//function calback to move to the other 
 				rollDice(diceType, iteration +1, rowPointer + howManyRowsToWrite)
 				//richiamo la funzione
 
