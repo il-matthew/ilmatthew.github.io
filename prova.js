@@ -68,6 +68,7 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 				rowPointer = rowPointer + howManyRowsToWrite;
 				
 			}
+			//diceFaceToWrite = 0;
 		}
 	}
 	
