@@ -38,10 +38,8 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 		}
 	}
 	
-	
-	
-	//for the for loop, store which iteration is being analyzed
-	//var iteration = 0;
+	var columnToWrite=0;
+	var iteration =0;
 	
 	//inizialize a storage for where the function left off to write and lazi inizialization
 	var rowToWrite = new Array(numberDicesRolled);
@@ -49,81 +47,42 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 		rowToWrite[i] = 0;
 	}
 	
-	
-	
 	//inizalize the counter for the dice
 	var diceFaceToWrite = new Array(diceTypeRolled.diceFaces.length);
 	for(i=0;i<diceFaceToWrite.length;i++){
 		diceFaceToWrite[i] = 0;
 	}
 	
-	function diceCombinations(diceTypeRolled, numberDicesRolled, iteration){
-		if(numberDicesRolled - iteration == 1){ //se è l'ultim interazione
-			for(i=0;i<diceTypeRolled.diceFaces.length;i++){
-				var temp = rowToWrite[iteration]+i;
-				diceResults[temp][iteration]  = diceTypeRolled.diceFaces[i]
-			}
-			rowToWrite[iteration]=rowToWrite[iteration]+diceTypeRolled.diceFaces.length;
+	function diceCombinations(iteration){
+		if(numberDicesRolled - iteration == 1){ //caso finale
+			for(i=0;i<diceTypeRolled.numCases(numberDicesRolled-1);i++){
+				for(j=0;j<diceTypeRolled.diceFaces.length;j++){
+					diceResults[(diceFaceToWrite[columnToWrite]+j)][columnToWrite] = diceTypeRolled.diceFaces[j];
+				}
+				diceFaceToWrite[columnToWrite] = diceFaceToWrite[columnToWrite] + diceTypeRolled.diceFaces.length;
+			}	
 		}else{
-			//determine how long is the block to write
-			var blockToWrite = diceTypeRolled.numCases(numberDicesRolled);//considerare iteration
-			
-			//write the column for the dice
-			for(i=0;i<diceTypeRolled.diceFaces.length;i++){
-				for(j=0;j<blockToWrite;j++){
-					var temp = rowToWrite[iteration]+j;
-					diceResults[temp][iteration] = diceTypeRolled.diceFaces[i]
+			var blockToWrite= diceTypeRolled.numCases(numberDicesRolled-iteration-1);
+			//for(k=0;k<diceTypeRolled.diceFaces.length;k++){//quante volte richiamare la funzione
+				//ogni faccia del dado
+				for(i=0;i<diceTypeRolled.diceFaces.length;i++){
+					for(j=0; j<blockToWrite;j++){
+						diceResults[(diceFaceToWrite[columnToWrite]+j)][columnToWrite] = diceTypeRolled.diceFaces[i];
+						console.log("risultato posizione: ["+(diceFaceToWrite[columnToWrite]+j)+"]["+columnToWrite+"]:"+diceResults[(diceFaceToWrite[columnToWrite]+j)][columnToWrite])
+					
+					}
+					diceFaceToWrite[columnToWrite] = diceFaceToWrite[columnToWrite] + blockToWrite;
 				}
-				rowToWrite[iteration]=rowToWrite[iteration]+blockToWrite;
-			}
-			
-			//call n times the function to write the other column
-			for(i=0;i<diceTypeRolled.diceFaces.length;i++){
-				diceCombinations(diceTypeRolled, numberDicesRolled, iteration+1)
-			}
-			// quante righe devo scrivere
-			//scrivo tutte le righe per tutti i dadi
-			//richiamo la funzione n volte, una per ogni faccia del dado scritta
-			//scrivo il blo
+			//}
+			columnToWrite++;
+			iteration++;
+			//richiamo la funzione step dopo
+			diceCombinations(iteration);
 		}
-		
-		
 	}
-	
-	/*
-	function rollDice(diceType, iteration) { //TODO insert carryon between operations
 
-		if (numberDicesRolled - iteration == 1) { //it's the last iteration, so it just writes the last dice
-			for (i = 0; i < diceType.diceFaces.length; i++) {
-				diceResults[diceFaceToWrite[iteration] + i][iteration] = diceType.diceFaces[i];
-			}
-			rowToWrite[iteration] = rowToWrite[iteration] + diceType.diceFaces.length;
-			diceFaceToWrite[iteration] = diceFaceToWrite[iteration]+diceType.diceFaces.length;
-		}
-		else {
-			
-			for (i = 0; i < diceType.diceFaces.length; i++) { //call the function for each face to write
-				var howManyRowsToWrite = diceType.numCases(numberDicesRolled - iteration - 1);
-			
-				for (j = 0; j < howManyRowsToWrite; j++) {
-					diceResults[rowToWrite[iteration]+j][iteration] = diceType.diceFaces[diceFaceToWrite[iteration]];
-				}
-				
-				//remember where to star writing next
-				diceFaceToWrite[i] = diceFaceToWrite[i]+howManyRowsToWrite;
-				//function calback to move to the other 
-				rollDice(diceType, iteration +1, rowToWrite[iteration +1])
-				//richiamo la funzione
-
-				diceFaceToWrite[iteration]++;
-				rowPointer = rowToWrite;
-				
-			}
-			
-		}
-	}*/
 	
-	diceCombinations(diceTypeRolled, numberDicesRolled,0);
+	diceCombinations(iteration);
 	return diceResults;
 
 }
