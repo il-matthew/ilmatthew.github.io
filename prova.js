@@ -83,7 +83,8 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 
 }
 
-var stub_successMatrix = ["critical", "smash"];
+var stub_attackSuccessMatrix = ["critical", "smash"];
+var stub_defenceSuccessMatrix = ["critical", "dodge"];
 
 function rollDiceSuccesses(diceTypeRolled, numberDicesRolled, successMatrix) {
 
@@ -131,7 +132,34 @@ function rollDiceSuccesses(diceTypeRolled, numberDicesRolled, successMatrix) {
 	return matrixSuccess;
 }
 
-var temporanea = rollDiceSuccesses(attackDice, 2, stub_successMatrix);
+var temporanea = rollDiceSuccesses(attackDice, 2, stub_attackSuccessMatrix);
+
+function confrontDiceSuccess(attackDiceType, attackDiceRolled, attackSuccessMatrix, defenseDiceType, defenseDiceRolled, defenceSuccessMatrix){
+	//store the attack Matrix success
+	var attackDiceSuccess = rollDiceSuccesses(attackDiceType,attackDiceRolled,attackSuccessMatrix);
+	
+	//store the defense Matrix success
+	var defenseDiceSuccess = rollDiceSuccesses(defenseDiceType,defenseDiceRolled,defenceSuccessMatrix);
+	
+	//variable to store the total success of the attack
+	var totalAttackDiceSuccess = 0;
+	
+	for(i=0;i<attackDiceSuccess.length;i++){
+		for(j=0;j<defenseDiceSuccess.length;j++){
+			if(attackDiceSuccess[i].criticalSuccess > defenseDiceSuccess[j].criticalSuccess){
+				totalAttackDiceSuccess++
+			}else{
+				if(attackDiceSuccess[i].criticalSuccess == defenseDiceSuccess[j].criticalSuccess && attackDiceSuccess[i].totalSuccess > defenseDiceSuccess[j].totalSuccess){
+					totalAttackDiceSuccess++
+				}
+			}
+		}
+	}
+	return totalAttackDiceSuccess;
+}
+
+var temporanea = confrontDiceSuccess(attackDice,3,stub_attackSuccessMatrix,defenceDice,2,stub_defenceSuccessMatrix);
+//se l'attacco ha cleave gli scudi non sono successi
 
 //scrivi il dado, passa il successvio per quanti scrivere dipende dalla stessa faccia del dado (potenza delle facce del dado)
 
