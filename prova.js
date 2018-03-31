@@ -63,7 +63,9 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 			}	
 		}else{
 			var blockToWrite= diceTypeRolled.numCases(numberDicesRolled-iteration-1);
-			//for(k=0;k<diceTypeRolled.diceFaces.length;k++){//quante volte richiamare la funzione
+			var numTimesToCall = numberTotalPossibilites/diceTypeRolled.numCases(numberDicesRolled-iteration);
+			console.log("numTimesToCall: "+numTimesToCall);
+			for(k=0;k<numTimesToCall;k++){//quante volte richiamare la funzione
 				//ogni faccia del dado
 				for(i=0;i<diceTypeRolled.diceFaces.length;i++){
 					for(j=0; j<blockToWrite;j++){
@@ -73,7 +75,7 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 					}
 					diceFaceToWrite[columnToWrite] = diceFaceToWrite[columnToWrite] + blockToWrite;
 				}
-			//}
+			}
 			columnToWrite++;
 			iteration++;
 			//richiamo la funzione step dopo
