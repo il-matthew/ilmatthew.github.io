@@ -23,7 +23,7 @@ var defenceDice = new Dice("block", "dodge");
 
 
 
-//create a function that rolls the dice results and returns the number of results results
+//create a function that rolls the dice results and returns the all possible dice combinations given a specific dice
 function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 
 	//total possible results of the rolls of that number of dices
@@ -38,21 +38,18 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 		}
 	}
 	
+	//initialize storeage for which column to write
 	var columnToWrite=0;
+	//initialize counter for the itration
 	var iteration =0;
 	
-	//inizialize a storage for where the function left off to write and lazi inizialization
-	var rowToWrite = new Array(numberDicesRolled);
-	for(i=0;i<numberDicesRolled;i++){
-		rowToWrite[i] = 0;
-	}
-	
-	//inizalize the counter for the dice
+	//inizalize the counter for which dice face to write
 	var diceFaceToWrite = new Array(diceTypeRolled.diceFaces.length);
 	for(i=0;i<diceFaceToWrite.length;i++){
 		diceFaceToWrite[i] = 0;
 	}
 	
+	//create a function that returns all possible dice combinations given a n° of dices and a type
 	function diceCombinations(iteration){
 		if(numberDicesRolled - iteration == 1){ //caso finale
 			for(i=0;i<diceTypeRolled.numCases(numberDicesRolled-1);i++){
@@ -63,15 +60,13 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 			}	
 		}else{
 			var blockToWrite= diceTypeRolled.numCases(numberDicesRolled-iteration-1);
+			//determine how many times call the function
 			var numTimesToCall = numberTotalPossibilites/diceTypeRolled.numCases(numberDicesRolled-iteration);
-			console.log("numTimesToCall: "+numTimesToCall);
-			for(k=0;k<numTimesToCall;k++){//quante volte richiamare la funzione
-				//ogni faccia del dado
+			//repeat for every dice face
+			for(k=0;k<numTimesToCall;k++){
 				for(i=0;i<diceTypeRolled.diceFaces.length;i++){
 					for(j=0; j<blockToWrite;j++){
 						diceResults[(diceFaceToWrite[columnToWrite]+j)][columnToWrite] = diceTypeRolled.diceFaces[i];
-						console.log("risultato posizione: ["+(diceFaceToWrite[columnToWrite]+j)+"]["+columnToWrite+"]:"+diceResults[(diceFaceToWrite[columnToWrite]+j)][columnToWrite])
-					
 					}
 					diceFaceToWrite[columnToWrite] = diceFaceToWrite[columnToWrite] + blockToWrite;
 				}
@@ -82,8 +77,6 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 			diceCombinations(iteration);
 		}
 	}
-
-	
 	diceCombinations(iteration);
 	return diceResults;
 
