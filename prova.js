@@ -32,41 +32,42 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 	//store the dice results
 	var diceResults = new Array();
 	//lazy inizialization of diceResults
-	for(i=0;i<numberTotalPossibilites;i++){
-		if (typeof diceResults[i] === 'undefined'){
+	for (i = 0; i < numberTotalPossibilites; i++) {
+		if (typeof diceResults[i] === 'undefined') {
 			diceResults[i] = new Array(numberDicesRolled);
 		}
 	}
-	
+
 	//initialize storeage for which column to write
-	var columnToWrite=0;
+	var columnToWrite = 0;
 	//initialize counter for the itration
-	var iteration =0;
-	
+	var iteration = 0;
+
 	//inizalize the counter for which dice face to write
 	var diceFaceToWrite = new Array(diceTypeRolled.diceFaces.length);
-	for(i=0;i<diceFaceToWrite.length;i++){
+	for (i = 0; i < diceFaceToWrite.length; i++) {
 		diceFaceToWrite[i] = 0;
 	}
-	
+
 	//create a function that returns all possible dice combinations given a n° of dices and a type
-	function diceCombinations(iteration){
-		if(numberDicesRolled - iteration == 1){ //caso finale
-			for(i=0;i<diceTypeRolled.numCases(numberDicesRolled-1);i++){
-				for(j=0;j<diceTypeRolled.diceFaces.length;j++){
-					diceResults[(diceFaceToWrite[columnToWrite]+j)][columnToWrite] = diceTypeRolled.diceFaces[j];
+	function diceCombinations(iteration) {
+		if (numberDicesRolled - iteration == 1) { //caso finale
+			for (i = 0; i < diceTypeRolled.numCases(numberDicesRolled - 1); i++) {
+				for (j = 0; j < diceTypeRolled.diceFaces.length; j++) {
+					diceResults[(diceFaceToWrite[columnToWrite] + j)][columnToWrite] = diceTypeRolled.diceFaces[j];
 				}
 				diceFaceToWrite[columnToWrite] = diceFaceToWrite[columnToWrite] + diceTypeRolled.diceFaces.length;
-			}	
-		}else{
-			var blockToWrite= diceTypeRolled.numCases(numberDicesRolled-iteration-1);
+			}
+		}
+		else {
+			var blockToWrite = diceTypeRolled.numCases(numberDicesRolled - iteration - 1);
 			//determine how many times call the function
-			var numTimesToCall = numberTotalPossibilites/diceTypeRolled.numCases(numberDicesRolled-iteration);
+			var numTimesToCall = numberTotalPossibilites / diceTypeRolled.numCases(numberDicesRolled - iteration);
 			//repeat for every dice face
-			for(k=0;k<numTimesToCall;k++){
-				for(i=0;i<diceTypeRolled.diceFaces.length;i++){
-					for(j=0; j<blockToWrite;j++){
-						diceResults[(diceFaceToWrite[columnToWrite]+j)][columnToWrite] = diceTypeRolled.diceFaces[i];
+			for (k = 0; k < numTimesToCall; k++) {
+				for (i = 0; i < diceTypeRolled.diceFaces.length; i++) {
+					for (j = 0; j < blockToWrite; j++) {
+						diceResults[(diceFaceToWrite[columnToWrite] + j)][columnToWrite] = diceTypeRolled.diceFaces[i];
 					}
 					diceFaceToWrite[columnToWrite] = diceFaceToWrite[columnToWrite] + blockToWrite;
 				}
@@ -82,7 +83,55 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 
 }
 
+var stub_successMatrix = ["critical", "smash"];
 
+function rollDiceSuccesses(diceTypeRolled, numberDicesRolled, successMatrix) {
+
+	function Success(criticalSuccessCounted, totalSuccessCounted) {
+		this.criticalSuccess = criticalSuccessCounted;
+		this.totalSuccess = totalSuccessCounted;
+	}
+
+	var numberRows = diceTypeRolled.numCases(numberDicesRolled);
+	var numberColumns = numberDicesRolled;
+	var successMatrixPassed = successMatrix;
+	var numCicles = successMatrixPassed.length;
+
+
+	var rowToWrite = 0;
+	//create the matrix for the successes
+	var matrixSuccess = [];
+	//initialize the matrix of results
+	var matrixCombination = rollDiceResults(diceTypeRolled, numberDicesRolled);
+
+	for (i = 0; i < numberRows; i++) {
+		var totalCriticalSuccess = 0;
+		var totalSuccess = 0;
+		for (j = 0; j < numberColumns; j++) {
+			for (k = 0; k < numCicles; k++) {
+				if (matrixCombination[i][j] == successMatrixPassed[k]) {
+					//check if critical success
+					if (matrixCombination[i][j] == diceTypeRolled.diceFaces[0]) {
+						totalCriticalSuccess++;
+						totalSuccess++;
+					}
+					else {
+						totalSuccess++;
+					}
+				}
+			}
+		}
+		if (totalSuccess != 0) {
+			var temp = new Success(totalCriticalSuccess, totalSuccess)
+			//matrixSuccess.push(temp);
+			matrixSuccess[rowToWrite] = temp;
+			rowToWrite++;
+		}
+	}
+	return matrixSuccess;
+}
+
+var temporanea = rollDiceSuccesses(attackDice, 2, stub_successMatrix);
 
 //scrivi il dado, passa il successvio per quanti scrivere dipende dalla stessa faccia del dado (potenza delle facce del dado)
 
