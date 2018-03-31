@@ -31,15 +31,21 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 
 	//store the dice results
 	var diceResults = new Array();
-
-	var iteration = 0;
-	var rowToWrite = 0;
-	//var diceFaceToWrite = new Array();
-	//lazy inizialization
+	//lazy inizialization of diceResults
 	for(i=0;i<numberTotalPossibilites;i++){
 		if (typeof diceResults[i] === 'undefined'){
 			diceResults[i] = new Array(numberDicesRolled);
 		}
+	}
+	
+	
+	var iteration = 0;
+	var rowToWrite = 0;
+	
+	//inizalize the counter for the dice
+	var diceFaceToWrite = new Array(diceTypeRolled.diceFaces.length);
+	for(i=0;i<diceFaceToWrite.length;i++){
+		diceFaceToWrite[i] = 0;
 	}
 	
 	
@@ -49,26 +55,26 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 			for (i = 0; i < diceType.diceFaces.length; i++) {
 				diceResults[rowPointer + i][iteration] = diceType.diceFaces[i];
 			}
+			rowToWrite = rowToWrite + diceType.diceFaces.length;
 		}
 		else {
-			var diceFaceToWrite = 0;
 			
 			for (i = 0; i < diceType.diceFaces.length; i++) { //call the function for each face to write
 				var howManyRowsToWrite = diceType.numCases(numberDicesRolled - iteration - 1);
 			
 				for (j = 0; j < howManyRowsToWrite; j++) {
-					diceResults[rowPointer+j][iteration] = diceType.diceFaces[diceFaceToWrite];
+					diceResults[rowPointer+j][iteration] = diceType.diceFaces[diceFaceToWrite[iteration]];
 				}
 
 				//function calback to move to the other 
 				rollDice(diceType, iteration +1, rowPointer + howManyRowsToWrite)
 				//richiamo la funzione
 
-				diceFaceToWrite++;
-				rowPointer = rowPointer + howManyRowsToWrite;
+				diceFaceToWrite[iteration]++;
+				rowPointer = rowToWrite;
 				
 			}
-			//diceFaceToWrite = 0;
+			
 		}
 	}
 	
