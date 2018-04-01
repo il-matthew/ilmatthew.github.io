@@ -1,25 +1,49 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Underworld Shadespire Dice Calculator</title>
-	</head>
+<head>
+	<meta charset="UTF-8">
+	<title>Underworld Shadespire Dice Calculator</title>
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+</head>
 
-	<body>
-		<div id="main-container">
-			<div id="attack">
-				<title>Attack Properties</title>
-			</div>
-			<div id="defense">
-				<title>Defense Properties</title>
-			</div>
-			<div id="support">
-				<title>Support Properties</title>
-			</div>
-			<div id="calculator">
-				<title>Probability of Success</title>
+<body>
+	<div id="main-container">
+		<div id="attack">
+			<h1>Attack Properties</h1>
+			<h2>Type of attack</h2>
+			<button>
+				smash
+			</button>
+			<button>
+				fury
+			</button>
+			<div class="slidecontainer">
+				<h2>N° of attack dices</h2>
+				<input type="range" min="1" max="6" value="2" step="1" class="slider" id="myRange">
 			</div>
 		</div>
-	</body>
+		<div id="defence">
+			<h1>Defence Properties</h1>
+			<h1>Attack Properties</h1>
+			<h2>Type of defence</h2>
+			<button>
+				smash
+			</button>
+			<button>
+				fury
+			</button>
+			<div class="slidecontainer">
+				<h2>N° of defence dices</h2>
+				<input type="range" min="1" max="3" value="1" step="1" class="slider" id="myRange">
+			</div>
+		</div>
+		<div id="support">
+			<h1>Support Properties</h1>
+		</div>
+		<div id="calculator">
+			<h1>Probability of Success</h1>
+		</div>
+	</div>
+</body>
 
 </html>
