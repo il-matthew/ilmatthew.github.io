@@ -21,6 +21,21 @@ var attackDice = new Dice("smash", "fury");
 //create the defence dice
 var defenceDice = new Dice("block", "dodge");
 
+//type of attack 
+var attackType;
+
+//type of defense
+var defenceType;
+
+//determine who has support
+var defenceSupport2 = false;
+var defenceSupport1 = false;
+var attackSupport2 = false;
+var attackSupport1 = false;
+
+//additional characterstichs cleave and guard
+var attackHasCleave = false;
+var defenceIsOnGuard = false;
 
 
 //create a function that rolls the dice results and returns the all possible dice combinations given a specific dice
@@ -85,6 +100,51 @@ function rollDiceResults(diceTypeRolled, numberDicesRolled) {
 
 var stub_attackSuccessMatrix = ["critical", "smash"];
 var stub_defenceSuccessMatrix = ["critical", "block"];
+
+//create the attack matrix of success
+function createAttackMatrix(){
+	var attackMatrix = ["critical"];
+	attackMatrix.push(attackType);
+	if(attackSupport1 == true){
+		attackMatrix.push("support1")
+	}
+	if(attackSupport2 == true){
+		attackMatrix.push("support1");
+		attackMatrix.push("support2")	
+	}
+
+	return attackMatrix;
+};
+
+//create the defence matrix of success
+function createDefenseMatrix(){
+	var defenceMatrix = ["critical"];
+	if(attackHasCleave == true){
+		if(defenceType == "fury"){
+			defenceMatrix.push("fury");
+		}
+
+	}else{
+		defenceMatrix.push(defenceType);
+		if(defenceIsOnGuard == true){
+			if(defenceType == "block"){
+				defenceMatrix.push("fury");
+			}else{
+				defenceMatrix.push("block");
+			}
+		}
+	}
+
+	if(defenceSupport1 == true){
+		defenceMatrix.push("support1")
+	}
+	if(defenceSupport2 == true){
+		defenceMatrix.push("support1");
+		defenceMatrix.push("support2")	
+	}
+
+	return defenceMatrix;
+}
 
 function rollDiceSuccesses(diceTypeRolled, numberDicesRolled, successMatrix) {
 
@@ -160,6 +220,8 @@ function confrontDiceSuccess(attackDiceType, attackDiceRolled, attackSuccessMatr
 	
 	return totalAttackDiceSuccess/( attackDiceType.numCases(attackDiceRolled) * defenseDiceType.numCases(defenseDiceRolled));
 }
+
+
 
 var temporanea = confrontDiceSuccess(attackDice,3,stub_attackSuccessMatrix,defenceDice,2,stub_defenceSuccessMatrix);
 //se l'attacco ha cleave gli scudi non sono successi
