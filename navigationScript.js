@@ -110,5 +110,7 @@ function resultWriter(){
 	//defenceDice = getDefenceType();
 	numAttackDice = document.getElementById("numAttackDice").value;
 	numDefenceDice = document.getElementById("numDefenceDice").value;
-	document.getElementById("calculator-result").innerHTML = confrontDiceSuccess(attackDice, numAttackDice, createAttackSuccessMatrix(),defenceDice,numDefenceDice,createDefenseSuccessMatrix());
+	var probabilitySuccess = confrontDiceSuccess(attackDice, numAttackDice, createAttackSuccessMatrix(),defenceDice,numDefenceDice,createDefenseSuccessMatrix());
+	probabilitySuccess = probabilitySuccess * 100;
+	document.getElementById("calculator-result").innerHTML = "Probability to succeed with the attack is "+ Math.round(probabilitySuccess*100)/100 + " %";
 }
