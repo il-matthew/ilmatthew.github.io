@@ -1,55 +1,91 @@
-
-body{
-    font-family: "Droid Serif", arial, serif;
-    padding: 100px;
+body {
+  font-family: "Droid Serif", arial, serif;
+  /*padding: 100px;*/
 }
 
-#main-container{
-  position: absolute;
-  left: 50%;
+.main-container {
+  margin: auto;
+  width: 60%;
+  display: block;
+  width: 800px;
 }
+
+.properties {
+  width: 50%;
+  float: left;
+  margin: auto;
+}
+
+@media only screen and (max-width: 650px) {
+  .main-container {
+    margin: auto;
+    width: 100%;
+    display: block;
+
+  }
+  .properties {
+    width: 100%;
+    
+  }
+}
+
+#header {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.newline {
+  display: inline-block;
+  width: auto;
+}
+
 h1 {
-    
-    font-size: 24px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 500;
-    line-height: 26.4px;
+
+  font-size: 24px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 26.4px;
 }
+
 h3 {
-    
-    font-size: 14px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 500;
-    line-height: 15.4px;
+
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 15.4px;
 }
+
 p {
-    
-    font-size: 14px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 400;
-    line-height: 20px;
+
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
 }
+
 blockquote {
-    
-    font-size: 21px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 400;
-    line-height: 30px;
+
+  font-size: 21px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 30px;
 }
+
 pre {
-    
-    font-size: 13px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 400;
-    line-height: 18.5714px;
+
+  font-size: 13px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 18.5714px;
 }
 
 /*dettagli per lo slider*/
+
 /*
 .slidecontainer {
     width: 100%;
@@ -86,6 +122,7 @@ pre {
     cursor: pointer;
 }
 */
+
 /*
 body {
   padding: 100px;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>Underworld Shadespire Dice Calculator</title>
@@ -13,92 +14,84 @@
 </head>
 
 <body onload="initialSetting()">
-	<div id="main-container">
+	<div class="main-container">
 		<div id="header">
+			<h1>Warhammer Underworlds dice calculator</h1>
+			<h2>by Ludic Incoming</h2>
 			
 		</div>
-		<div id="attack">
-			<h1>Attack Properties</h1>
-			<h2>Type of attack</h2>
-			<div class="attackButton">
-				
-			<!-- <button>
-				smash
-			</button>
-			<button>
-				fury
-			</button>-->
-			<form>
-				<input type="radio" name="attacktypecheckbox" value="smash" onclick="setAttackSmash()"id="attacktypesmash">smash</input>
-				<input type="radio" name="attacktypecheckbox" value="fury" onclick="setAttackFury()" id="attacktypefury">fury</input>
-			</form>
+		<div>
+			<div id="attack" class="properties">
+				<h2>Attack Properties</h2>
+				<h3>Type of attack</h3>
+				<div class="attackButton">
+					<form>
+						<input type="radio" name="attacktypecheckbox" value="smash" onclick="setAttackSmash()" id="attacktypesmash">smash</input>
+						<input type="radio" name="attacktypecheckbox" value="fury" onclick="setAttackFury()" id="attacktypefury">fury</input>
+					</form>
+				</div>
+				<div class="slidecontainer">
+					<h3>N° of attack dices</h3>
+					<input type="range" min="1" max="6" value="2" step="1" class="slider" id="numAttackDice">
+					<ul class="range-labels">
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+					</ul>
+				</div>
+				<div class="cleave">
+					<p>The attacker has cleave?</p>
+					<input type="checkbox" name="hasCleave" onclick="setCleave()" id="hasCleaveCheckbox">
+				</div>
+			</div>
+			<div id="defence" class="properties">
+				<h2>Defence Properties</h2>
+				<h3>Type of defence</h3>
+				<div class="defenceButton">
+					<form>
+						<input type="radio" name="defencetypecheckbox" value="block" onclick="setDefenceBlock()" id="defencetypeblock">block</input>
+						<input type="radio" name="defencetypecheckbox" value="dodge" onclick="setDefenceDodge()" id="defencetypedodge">dodge</input>
+					</form>
+				</div>
+				<div class="slidecontainer">
+					<h3>N° of defence dices</h3>
+					<input type="range" min="1" max="3" value="1" step="1" class="slider" id="numDefenceDice">
+					<ul class="range-labels">
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+				</div>
+				<div class="onGuard">
+					<p>The defender is on Guard?</p>
+					<input type="checkbox" name="onGuard" onclick="setGuard()" id="onGuardCheckbox">
+				</div>
+			</div>
 		</div>
-		<div class="slidecontainer">
-			<h2>N° of attack dices</h2>
-			<input type="range" min="1" max="6" value="2" step="1" class="slider" id="numAttackDice">
-			<ul class="range-labels">
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
-				<li>5</li>
-				<li>6</li>
-			</ul>
-		</div>
-		<div class ="cleave">
-			<p>The attacker has cleave?</p>
-			<input type="checkbox" name="hasCleave" onclick="setCleave()" id="hasCleaveCheckbox">
+		
+		<div class="newline">
+			<div id="support">
+				<h2>Support Properties</h2>
+				<div class="range-slider">
+					<form>
+						<input type="radio" name="supportradio" id="def2support" onclick="def2Support()">Def - 2 Support</input>
+						<input type="radio" name="supportradio" id="def1support" onclick="def1Support()">Def - 1 Support</input>
+						<input type="radio" name="supportradio" id="nonesupport" onclick="noneSupport()">None</input>
+						<input type="radio" name="supportradio" id="attack1support" onclick="att1Support()">Att - 1 Support</input>
+						<input type="radio" name="supportradio" id="attack1support" onclick="att2Support()">Att - 2 Support</input>
+					</form>
+				</div>
+			</div>
+			<div id="calculator">
+				<h2>Probability of Success</h2>
+				<button id="calculator-button" onclick="resultWriter()">Calculate!</button>
+				<p id="calculator-result"></p>
+			</div>
 		</div>
 	</div>
-	<div id="defence">
-		<h1>Defence Properties</h1>
-		<h2>Type of defence</h2>
-		<div class="defenceButton">
-			<form>
-				<input type="radio" name="defencetypecheckbox" value="block" onclick="setDefenceBlock()" id="defencetypeblock">block</input>
-				<input type="radio" name="defencetypecheckbox" value="dodge" onclick="setDefenceDodge()" id="defencetypedodge">dodge</input>
-			</form>
-		</div>
-		<!--
-		<button>
-			smash
-		</button>
-		<button>
-			fury
-		</button>
-	-->
-	<div class="slidecontainer">
-		<h2>N° of defence dices</h2>
-		<input type="range" min="1" max="3" value="1" step="1" class="slider" id="numDefenceDice">
-		<ul class="range-labels">
-			<li>1</li>
-			<li>2</li>
-			<li>3</li>
-		</ul>
-	</div>
-	<div class ="onGuard">
-		<p>The defender is on Guard?</p>
-		<input type="checkbox" name="onGuard" onclick="setGuard()" id="onGuardCheckbox">
-	</div>
-</div>
-<div id="support">
-	<h1>Support Properties</h1>
-	<div class="range-slider">
-		<form>
-			<input type="radio" name="supportradio" id="def2support" onclick="def2Support()">Def - 2 Support</input>
-			<input type="radio" name="supportradio" id="def1support" onclick="def1Support()">Def - 1 Support</input>
-			<input type="radio" name="supportradio" id="nonesupport" onclick="noneSupport()">None</input>
-			<input type="radio" name="supportradio" id="attack1support" onclick="att1Support()">Att - 1 Support</input>
-			<input type="radio" name="supportradio" id="attack1support"onclick= "att2Support()">Att - 2 Support</input>
-		</form>
-	</div>
-</div>
-<div id="calculator">
-	<h1>Probability of Success</h1>
-	<button id="calculator-button" onclick="resultWriter()">Calculate!</button>
-	<p id="calculator-result"></p>
-</div>
-</div>
 
 </body>
 
