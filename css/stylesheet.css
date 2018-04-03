@@ -84,6 +84,15 @@ pre {
   line-height: 18.5714px;
 }
 
+#calculator-wrapper{
+  visibility: hidden;
+}
+
+
+#calculator-result{
+  font-weight: 900;
+}
+
 /*dettagli per lo slider*/
 
 /*

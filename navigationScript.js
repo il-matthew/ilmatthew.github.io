@@ -100,6 +100,9 @@ function initialSetting(){
 	//set none support
 	document.getElementById("nonesupport").checked = true;
 	noneSupport();
+	
+	//hide the p for the result
+	//document.getElementById("calculator-wrapper").style.visibility = "hidden"
 }
 
 
@@ -110,7 +113,8 @@ function resultWriter(){
 	//defenceDice = getDefenceType();
 	numAttackDice = document.getElementById("numAttackDice").value;
 	numDefenceDice = document.getElementById("numDefenceDice").value;
+	document.getElementById("calculator-wrapper").style.visibility = "visible"
 	var probabilitySuccess = confrontDiceSuccess(attackDice, numAttackDice, createAttackSuccessMatrix(),defenceDice,numDefenceDice,createDefenseSuccessMatrix());
 	probabilitySuccess = probabilitySuccess * 100;
-	document.getElementById("calculator-result").innerHTML = "Probability to succeed with the attack is "+ Math.round(probabilitySuccess*100)/100 + " %";
+	document.getElementById("calculator-result").innerHTML = Math.round(probabilitySuccess*100)/100 + " %";
 }
