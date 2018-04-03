@@ -1,5 +1,5 @@
 function setCleave(){
-	var cleaveCheckbox = document.getElementById("hasCleave");
+	var cleaveCheckbox = document.getElementById("hasCleaveCheckbox");
 	
 	if(cleaveCheckbox.checked==true){
 		attackHasCleave = true;
@@ -9,7 +9,7 @@ function setCleave(){
 }
 
 function setGuard(){
-	var guardCheckbox = document.getElementById("onGuard");
+	var guardCheckbox = document.getElementById("onGuardCheckbox");
 
 	if(guardCheckbox.checked==true){
 		defenceIsOnGuard = true;
