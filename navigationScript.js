@@ -23,7 +23,7 @@ function setAttackSmash(){
 }
 
 function setAttackFury(){
-	attackType = "smash";
+	attackType = "fury";
 }
 
 function setDefenceBlock() {
