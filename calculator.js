@@ -21,6 +21,12 @@ var attackDice = new Dice("smash", "fury");
 //create the defence dice
 var defenceDice = new Dice("block", "dodge");
 
+//n° attack dice rolled
+var numAttackDice;
+
+//n° defence dice rolled
+var numDefenceDice;
+
 //type of attack 
 var attackType;
 
@@ -102,7 +108,7 @@ var stub_attackSuccessMatrix = ["critical", "smash"];
 var stub_defenceSuccessMatrix = ["critical", "block"];
 
 //create the attack matrix of success
-function createAttackMatrix(){
+function createAttackSuccessMatrix(){
 	var attackMatrix = ["critical"];
 	attackMatrix.push(attackType);
 	if(attackSupport1 == true){
@@ -117,18 +123,18 @@ function createAttackMatrix(){
 };
 
 //create the defence matrix of success
-function createDefenseMatrix(){
+function createDefenseSuccessMatrix(){
 	var defenceMatrix = ["critical"];
 	if(attackHasCleave == true){
-		if(defenceType == "fury"){
-			defenceMatrix.push("fury");
+		if(defenceType == "dodge"){
+			defenceMatrix.push("dodge");
 		}
 
 	}else{
 		defenceMatrix.push(defenceType);
 		if(defenceIsOnGuard == true){
 			if(defenceType == "block"){
-				defenceMatrix.push("fury");
+				defenceMatrix.push("dodge");
 			}else{
 				defenceMatrix.push("block");
 			}
@@ -223,7 +229,7 @@ function confrontDiceSuccess(attackDiceType, attackDiceRolled, attackSuccessMatr
 
 
 
-var temporanea = confrontDiceSuccess(attackDice,3,stub_attackSuccessMatrix,defenceDice,2,stub_defenceSuccessMatrix);
+//var results = confrontDiceSuccess(attackDice, numAttackDice, createAttackSuccessMatrix(),defenceDice,numDefenceDice,createDefenseSuccessMatrix());
 //se l'attacco ha cleave gli scudi non sono successi
 
 //scrivi il dado, passa il successvio per quanti scrivere dipende dalla stessa faccia del dado (potenza delle facce del dado)
