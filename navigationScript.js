@@ -33,6 +33,41 @@ function setDefenceBlock() {
 function setDefenceDodge(){
 	defenceType = "dodge";
 }
+
+function def2Support(){
+	defenceSupport2 = true;
+	defenceSupport1 = true;
+	attackSupport2 = false;
+	attackSupport1 = false;
+}
+
+function def1Support(){
+	defenceSupport2 = false;
+	defenceSupport1 = true;
+	attackSupport2 = false;
+	attackSupport1 = false;
+}
+
+function noneSupport(){
+	defenceSupport2 = false;
+	defenceSupport1 = false;
+	attackSupport2 = false;
+	attackSupport1 = false;
+}
+
+function att1Support(){
+	defenceSupport2 = false;
+	defenceSupport1 = false;
+	attackSupport2 = false;
+	attackSupport1 = true;
+}
+
+function att2Support(){
+	defenceSupport2 = false;
+	defenceSupport1 = false;
+	attackSupport2 = true;
+	attackSupport1 = true;
+}
 /*
 function getAttackType(){
 	if(document.getElementById("attacktypecheckboxsmash").checked){
@@ -53,7 +88,20 @@ function getDefenceType(){
 	}
 }
 */	
+function initialSetting(){
+	//set the attack as smash
+	document.getElementById("attacktypesmash").checked = true;
+	setAttackSmash();
 	
+	//set the defence as block
+	document.getElementById("defencetypeblock").checked = true;
+	setDefenceBlock();
+	
+	//set none support
+	document.getElementById("nonesupport").checked = true;
+	noneSupport();
+}
+
 
 
 function resultWriter(){

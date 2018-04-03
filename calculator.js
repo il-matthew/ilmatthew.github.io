@@ -145,7 +145,7 @@ function createDefenseSuccessMatrix(){
 		defenceMatrix.push("support1")
 	}
 	if(defenceSupport2 == true){
-		defenceMatrix.push("support1");
+		//defenceMatrix.push("support1");
 		defenceMatrix.push("support2")	
 	}
 

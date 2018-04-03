@@ -26,8 +26,8 @@
 				fury
 			</button>-->
 			<form>
-				<input type="radio" name="attacktypecheckbox" value="smash" onclick="setAttackSmash()">smash</input>
-				<input type="radio" name="attacktypecheckbox" value="fury" onclick="setAttackFury()">fury</input>
+				<input type="radio" name="attacktypecheckbox" value="smash" onclick="setAttackSmash()"id="attacktypesmash">smash</input>
+				<input type="radio" name="attacktypecheckbox" value="fury" onclick="setAttackFury()" id="attacktypefury">fury</input>
 			</form>
 		</div>
 		<div class="slidecontainer">
@@ -53,8 +53,8 @@
 		<h2>Type of defence</h2>
 		<div class="defenceButton">
 			<form>
-				<input type="radio" name="defencetypecheckbox" value="block" onclick="setDefenceBlock()">block</input>
-				<input type="radio" name="defencetypecheckbox" value="dodge" onclick="setDefenceDodge()">dodge</input>
+				<input type="radio" name="defencetypecheckbox" value="block" onclick="setDefenceBlock()" id="defencetypeblock">block</input>
+				<input type="radio" name="defencetypecheckbox" value="dodge" onclick="setDefenceDodge()" id="defencetypedodge">dodge</input>
 			</form>
 		</div>
 		<!--
@@ -82,20 +82,13 @@
 <div id="support">
 	<h1>Support Properties - da implementare la lettura</h1>
 	<div class="range-slider">
-		<input type="range" min="1" max="5" step="1" labels="'2 Support', '1 Support', None, '1 Support', '2 Support'">
-		<ul class="range-labels">
-			<li>Attack</li>
-			<ul>
-				<li>2 Support</li>
-				<li>1 Support</li>
-			</ul>
-			<li>None</li>
-			<li>Defence</li>
-			<ul>
-				<li>1 Support</li>
-				<li>2 Support</li>
-			</ul>
-		</ul>
+		<form>
+			<input type="radio" name="supportradio" id="def2support" onclick="def2Support()">Def - 2 Support</input>
+			<input type="radio" name="supportradio" id="def1support" onclick="def1Support()">Def - 2 Support</input>
+			<input type="radio" name="supportradio" id="nonesupport" onclick="noneSupport()">None</input>
+			<input type="radio" name="supportradio" id="attack1support" onclick="att1Support()">Att - 1 Support</input>
+			<input type="radio" name="supportradio" id="attack1support"onclick= "att2Support()">Att - 2 Support</input>
+		</form>
 	</div>
 </div>
 <div id="calculator">
