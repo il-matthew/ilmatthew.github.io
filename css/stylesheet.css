@@ -25,7 +25,9 @@ body {
   }
   .properties {
     width: 100%;
-    
+  }
+  #support-label{
+   display: none; 
   }
 }
 
