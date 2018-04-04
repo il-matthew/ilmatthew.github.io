@@ -77,12 +77,16 @@
 				<h2>Support Properties</h2>
 				<div class="range-slider">
 					<form>
-						<input type="radio" name="supportradio" id="def2support" onclick="def2Support()">Def - 2 Support</input>
-						<input type="radio" name="supportradio" id="def1support" onclick="def1Support()">Def - 1 Support</input>
+						<input type="radio" name="supportradio" id="def2support" onclick="def2Support()"><img src="img/double-support.png" style="padding-left: 10px;padding-right: 10px;">2 Support</input>
+						<input type="radio" name="supportradio" id="def1support" onclick="def1Support()"><img src="img/single-support.png" style="padding-left: 10px;padding-right: 10px;">1 Support</input>
 						<input type="radio" name="supportradio" id="nonesupport" onclick="noneSupport()">None</input>
-						<input type="radio" name="supportradio" id="attack1support" onclick="att1Support()">Att - 1 Support</input>
-						<input type="radio" name="supportradio" id="attack1support" onclick="att2Support()">Att - 2 Support</input>
+						<input type="radio" name="supportradio" id="attack1support" onclick="att1Support()">1 Support<img src="img/single-support.png" style="transform: rotate(180deg);padding-left: 10px;padding-right: 10px;"></input>
+						<input type="radio" name="supportradio" id="attack1support" onclick="att2Support()">2 Support<img src="img/double-support.png" style="padding-left: 10px;padding-right: 10px;"></input>
 					</form>
+					<div>
+						<p style="text-align: left">Defence<span style="float: right">Attack</span></p>
+						
+					</div>
 				</div>
 			</div>
 			<div id="calculator">
