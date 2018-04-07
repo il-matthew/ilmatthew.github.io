@@ -1,5 +1,5 @@
 var attackSlider = new Slider("#numAttackDiceSlider", {
-		tooltip: 'always'
+		tooltip: 'always',
 });
 
 function setCleave() {
@@ -53,6 +53,11 @@ function def2Support() {
 	defenceSupport1 = true;
 	attackSupport2 = false;
 	attackSupport1 = false;
+	document.getElementById("attack2support").className = "btn btn-primary active";
+	document.getElementById("attack1support").className = "btn btn-primary";
+	document.getElementById("nonesupport").className = "btn btn-primary";
+	document.getElementById("def1support").className = "btn btn-primary";
+	document.getElementById("def2support").className = "btn btn-primary";
 }
 
 function def1Support() {
@@ -60,6 +65,11 @@ function def1Support() {
 	defenceSupport1 = true;
 	attackSupport2 = false;
 	attackSupport1 = false;
+	document.getElementById("attack2support").className = "btn btn-primary";
+	document.getElementById("attack1support").className = "btn btn-primary active";
+	document.getElementById("nonesupport").className = "btn btn-primary";
+	document.getElementById("def1support").className = "btn btn-primary";
+	document.getElementById("def2support").className = "btn btn-primary";
 }
 
 function noneSupport() {
@@ -67,6 +77,11 @@ function noneSupport() {
 	defenceSupport1 = false;
 	attackSupport2 = false;
 	attackSupport1 = false;
+	document.getElementById("attack2support").className = "btn btn-primary";
+	document.getElementById("attack1support").className = "btn btn-primary";
+	document.getElementById("nonesupport").className = "btn btn-primary active";
+	document.getElementById("def1support").className = "btn btn-primary";
+	document.getElementById("def2support").className = "btn btn-primary";
 }
 
 function att1Support() {
@@ -74,6 +89,11 @@ function att1Support() {
 	defenceSupport1 = false;
 	attackSupport2 = false;
 	attackSupport1 = true;
+	document.getElementById("attack2support").className = "btn btn-primary";
+	document.getElementById("attack1support").className = "btn btn-primary";
+	document.getElementById("nonesupport").className = "btn btn-primary";
+	document.getElementById("def1support").className = "btn btn-primary active";
+	document.getElementById("def2support").className = "btn btn-primary";
 }
 
 function att2Support() {
@@ -81,27 +101,12 @@ function att2Support() {
 	defenceSupport1 = false;
 	attackSupport2 = true;
 	attackSupport1 = true;
+	document.getElementById("attack2support").className = "btn btn-primary";
+	document.getElementById("attack1support").className = "btn btn-primary";
+	document.getElementById("nonesupport").className = "btn btn-primary";
+	document.getElementById("def1support").className = "btn btn-primary";
+	document.getElementById("def2support").className = "btn btn-primary active";
 }
-/*
-function getAttackType(){
-	if(document.getElementById("attacktypecheckboxsmash").checked){
-		return "smash";
-	}
-	if(document.getElementById("attacktypecheckboxfury").checked){	
-		return "fury";
-	}
-}
-
-function getDefenceType(){
-	if(document.getElementById("defencetypecheckboxblock").checked){
-		return "block";
-	}
-
-	if(document.getElementById("defencetypecheckboxdodge").checked){
-		return "dodge";
-	}
-}
-*/
 
 var numAttackDiceSelector = document.getElementById("numAttackDice");
 var numAttackDiceOutputSelector = document.getElementById("selectedDiceAttack");
@@ -120,7 +125,6 @@ function initialSetting() {
 	setDefenceBlock();
 
 	//set none support
-	document.getElementById("nonesupport").checked = true;
 	noneSupport();
 
 	//hide the p for the result

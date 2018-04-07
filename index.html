@@ -37,7 +37,7 @@
 				<div class="attackButton">
 
 					<div class="btn-group">
-						<button type="button" class="btn btn-primary active" onclick="setAttackSmash()" id="attacktypesmash"><img src="img/hammer.png"></img></button>
+						<button type="button" class="btn btn-primary active" onclick="setAttackSmash()" id="attacktypesmash" data><img src="img/hammer.png"></img></button>
 						<button type="button" class="btn btn-primary" onclick="setAttackFury()" id="attacktypefury"><img src="img/sword.png"></img></button>
 					</div>
 				</div>
@@ -80,15 +80,15 @@
 
 
 			<div id="support" class="row">
-				<h2>Support Properties</h2>
+				<h2>SUPPORT</h2>
 				<div class="range-slider">
-					<form>
-						<input type="radio" name="supportradio" id="def2support" onclick="att2Support()"><img src="img/double-support.png" style="padding-left: 10px;padding-right: 10px;"><span id="support-label">2 Support</span></input>
-						<input type="radio" name="supportradio" id="def1support" onclick="att1Support()"><img src="img/single-support.png" style="padding-left: 10px;padding-right: 10px;"><span id="support-label">1 Support</span></input>
-						<input type="radio" name="supportradio" id="nonesupport" onclick="noneSupport()">None</input>
-						<input type="radio" name="supportradio" id="attack1support" onclick="def1Support()"><span id="support-label">1 Support</span><img src="img/single-support.png" style="transform: rotate(180deg);padding-left: 10px;padding-right: 10px;"></input>
-						<input type="radio" name="supportradio" id="attack1support" onclick="def2Support()"><span id="support-label">2 Support</span><img src="img/double-support.png" style="padding-left: 10px;padding-right: 10px;"></input>
-					</form>
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary" onclick="att2Support()" id="attack2support"><img src="img/double-support.png"></img></button>
+						<button type="button" class="btn btn-primary" onclick="att1Support()" id="attack1support"><img src="img/single-support.png"></img></button>
+						<button type="button" class="btn btn-primary active" onclick="noneSupport()" id="nonesupport">None</button>
+						<button type="button" class="btn btn-primary" onclick="def1Support()" id="def1support"><img src="img/single-support.png" style="transform: rotate(180deg);"></img></button>
+						<button type="button" class="btn btn-primary" onclick="def2Support()" id="def2support"><img src="img/double-support.png"></img></button>
+					</div>
 					<div>
 						<p style="text-align: left;text-decoration: underline;">Attack<span style="float: right">Defence</span></p>
 
