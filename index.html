@@ -29,7 +29,7 @@
 
 	</div>
 	<div class="container">
-		<div class="col-sm-offset-4 col-sm-4">
+		<div class="col-sm-offset-4 col-sm-4" align = "center">
 
 			<div id="attack" class="row">
 				<h2>ATTACK</h2>
@@ -61,15 +61,11 @@
 						<button type="button" class="btn btn-primary" onclick="setDefenceDodge()" id="defencetypedodge"><img src="img/dodge.png"></img></button>
 					</div>
 				</div>
-				<input id="ex8" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+				
+				
 				<div class="slidecontainer">
 					<h3>N° of defence dices</h3>
-					<input type="range" min="1" max="3" value="1" step="1" class="slider" id="numDefenceDice">
-					<ul class="range-labels">
-						<li>1</li>
-						<li>2</li>
-						<li>3</li>
-					</ul>
+					<input type="text" id="numDefenceDiceSlider" name="numDefenceDiceSlider" data-provide="slider" data-slider-min="1" data-slider-max="4" data-slider-step="1" data-slider-value="2">
 				</div>
 				<div class="onGuard">
 					<p>The defender is on Guard?</p>
@@ -96,8 +92,7 @@
 				</div>
 			</div>
 			<div id="calculator" class="row">
-				<h2>Probability of Success</h2>
-				<button id="calculator-button" onclick="resultWriter()">Calculate!</button>
+				<button id="calculator-button" class="btn btn-primary btn-lg" onclick="resultWriter()">Calculate!</button>
 				<p id="calculator-wrapper">Probability to succeed with the attack is: <span id="calculator-result"></span></p>
 			</div>
 		</div>

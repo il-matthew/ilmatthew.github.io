@@ -2,6 +2,10 @@ var attackSlider = new Slider("#numAttackDiceSlider", {
 		tooltip: 'always',
 });
 
+var defenceSlider = new Slider("#numDefenceDiceSlider", {
+		tooltip: 'always',
+}); 
+
 function setCleave() {
 	var cleaveCheckbox = document.getElementById("hasCleaveCheckbox");
 
