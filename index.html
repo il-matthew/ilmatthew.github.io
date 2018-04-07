@@ -12,40 +12,46 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<!-- bootstrap slider-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.0/css/bootstrap-slider.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.0/bootstrap-slider.min.js"></script>
 
-
-	<script type='text/javascript' src="rangeslider.js"></script>
-	<script type='text/javascript' src="calculator.js"></script>
-	<script type="text/javascript" src="navigationScript.js"></script>
+	<script type='text/javascript' src="js/calculator.js"></script>
+	<script type="text/javascript" src="js/navigationScript.js"></script>
 	<script type="text/javascript" src="js/gtag.js"></script>
+	<script type="text/javascript">
+		window.addEventListener("load", initialSetting());
+	</script>
 </head>
 
-<body onload="initialSetting()">
+<body>
 	<div id="header" class="jumbotron">
 		<h1>Warhammer Underworlds dice calculator</h1>
 		<h2>by Ludic Incoming</h2>
 
 	</div>
 	<div class="container">
-		<div class="col-sm-offset-4 col-sm-4" align = "center">
+		<div class="col-sm-offset-4 col-sm-4" align="center">
 
 			<div id="attack" class="row">
 				<h2>ATTACK</h2>
 
 				<div class="attackButton">
 
-					<div class="btn-group">
-						<button type="button" class="btn btn-primary active" onclick="setAttackSmash()" id="attacktypesmash" data><img src="img/hammer.png"></img></button>
-						<button type="button" class="btn btn-primary" onclick="setAttackFury()" id="attacktypefury"><img src="img/sword.png"></img></button>
+					<div class="btn" data-toggle="buttons">
+						<label class="btn btn-primary active">
+							<input type="radio" name="smash" id="attacktypesmash" autocomplete="off" checked onclick="setAttackSmash()"> <img src="img/hammer.png"></img>
+  						</label>
+						<label class="btn btn-primary">
+						  <input type="radio" name="fury" id="attacktypefury" autocomplete="off" onclick="setAttackFury()"> <img src="img/sword.png"></img>
+						</label>
 					</div>
 				</div>
 				<div class="slidecontainer">
 					<h3>N° of attack dices
 						<p id="selectedDiceAttack"></p>
 					</h3>
-					<input type="text" id="numAttackDiceSlider" name="numAttackDiceSlider" data-provide="slider" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value="2">
+					<!--<input type="text" id="numAttackDiceSlider" name="numAttackDiceSlider" data-provide="slider" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value="2">-->
+					  <input id="numAttackDiceSlider" type="text" data-slider-ticks="[1, 2, 3, 4, 5]" data-slider-ticks-labels="['1', '2', '3', '4', '5', '6']" data-slider-value="2"/>
 				</div>
 				<div class="cleave">
 					<p>The attacker has cleave?</p>
@@ -54,15 +60,16 @@
 			</div>
 			<div id="defence" class="row">
 				<h2>DEFENCE</h2>
-				<div class="defenceButton">
-
-					<div class="btn-group">
-						<button type="button" class="btn btn-primary active" onclick="setDefenceBlock()" id="defencetypeblock"><img src="img/shield.png"></img></button>
-						<button type="button" class="btn btn-primary" onclick="setDefenceDodge()" id="defencetypedodge"><img src="img/dodge.png"></img></button>
+				<div class="btn" data-toggle="buttons">
+						<label class="btn btn-primary active">
+							<input type="radio" name="smash" id="defencetypeblock" autocomplete="off" checked onclick="setDefenceBlock()"> <img src="img/shield.png"></img>
+  						</label>
+						<label class="btn btn-primary">
+						  <input type="radio" name="fury" id="defencetypedodge" autocomplete="off" onclick="setDefenceDodge()"> <img src="img/dodge.png"></img>
+						</label>
 					</div>
-				</div>
-				
-				
+
+
 				<div class="slidecontainer">
 					<h3>N° of defence dices</h3>
 					<input type="text" id="numDefenceDiceSlider" name="numDefenceDiceSlider" data-provide="slider" data-slider-min="1" data-slider-max="4" data-slider-step="1" data-slider-value="2">
@@ -78,7 +85,7 @@
 			<div id="support" class="row">
 				<h2>SUPPORT</h2>
 				<div class="range-slider">
-					<div class="btn-group">
+					<div class="btn">
 						<button type="button" class="btn btn-primary" onclick="att2Support()" id="attack2support"><img src="img/double-support.png"></img></button>
 						<button type="button" class="btn btn-primary" onclick="att1Support()" id="attack1support"><img src="img/single-support.png"></img></button>
 						<button type="button" class="btn btn-primary active" onclick="noneSupport()" id="nonesupport">None</button>
@@ -93,7 +100,7 @@
 			</div>
 			<div id="calculator" class="row">
 				<button id="calculator-button" class="btn btn-primary btn-lg" onclick="resultWriter()">Calculate!</button>
-				<p id="calculator-wrapper">Probability to succeed with the attack is: <span id="calculator-result"></span></p>
+				<h1 id="calculator-wrapper"><span id="calculator-result"></span>%</h1>
 			</div>
 		</div>
 	</div>
