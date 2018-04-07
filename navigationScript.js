@@ -1,28 +1,30 @@
-function setCleave(){
+function setCleave() {
 	var cleaveCheckbox = document.getElementById("hasCleaveCheckbox");
-	
-	if(cleaveCheckbox.checked==true){
+
+	if (cleaveCheckbox.checked == true) {
 		attackHasCleave = true;
-	}else{
+	}
+	else {
 		attackHasCleave = false;
 	}
 }
 
-function setGuard(){
+function setGuard() {
 	var guardCheckbox = document.getElementById("onGuardCheckbox");
 
-	if(guardCheckbox.checked==true){
+	if (guardCheckbox.checked == true) {
 		defenceIsOnGuard = true;
-	}else{
+	}
+	else {
 		defenceIsOnGuard = false;
 	}
 }
 
-function setAttackSmash(){
+function setAttackSmash() {
 	attackType = "smash";
 }
 
-function setAttackFury(){
+function setAttackFury() {
 	attackType = "fury";
 }
 
@@ -30,39 +32,39 @@ function setDefenceBlock() {
 	defenceType = "block";
 }
 
-function setDefenceDodge(){
+function setDefenceDodge() {
 	defenceType = "dodge";
 }
 
-function def2Support(){
+function def2Support() {
 	defenceSupport2 = true;
 	defenceSupport1 = true;
 	attackSupport2 = false;
 	attackSupport1 = false;
 }
 
-function def1Support(){
+function def1Support() {
 	defenceSupport2 = false;
 	defenceSupport1 = true;
 	attackSupport2 = false;
 	attackSupport1 = false;
 }
 
-function noneSupport(){
+function noneSupport() {
 	defenceSupport2 = false;
 	defenceSupport1 = false;
 	attackSupport2 = false;
 	attackSupport1 = false;
 }
 
-function att1Support(){
+function att1Support() {
 	defenceSupport2 = false;
 	defenceSupport1 = false;
 	attackSupport2 = false;
 	attackSupport1 = true;
 }
 
-function att2Support(){
+function att2Support() {
 	defenceSupport2 = false;
 	defenceSupport1 = false;
 	attackSupport2 = true;
@@ -87,34 +89,49 @@ function getDefenceType(){
 		return "dodge";
 	}
 }
-*/	
-function initialSetting(){
+*/
+
+var numAttackDiceSelector = document.getElementById("numAttackDice");
+var numAttackDiceOutputSelector = document.getElementById("selectedDiceAttack");
+
+
+
+
+function initialSetting() {
 	//set the attack as smash
 	document.getElementById("attacktypesmash").checked = true;
 	setAttackSmash();
-	
+
 	//set the defence as block
 	document.getElementById("defencetypeblock").checked = true;
 	setDefenceBlock();
-	
+
 	//set none support
 	document.getElementById("nonesupport").checked = true;
 	noneSupport();
-	
+
+	numAttackDiceOutputSelector.innerHTML = numAttackDiceSelector;
+
+	numAttackDiceSelector.addEventListener("change", function() {
+		numAttackDiceOutputSelector.innerHTML = numAttackDiceSelector.value;
+	}, false);
+
 	//hide the p for the result
 	//document.getElementById("calculator-wrapper").style.visibility = "hidden"
 }
 
 
 
-function resultWriter(){
+
+
+function resultWriter() {
 	//attackType = getAttackType();
 	console.log(attackType);
 	//defenceDice = getDefenceType();
 	numAttackDice = document.getElementById("numAttackDice").value;
 	numDefenceDice = document.getElementById("numDefenceDice").value;
 	document.getElementById("calculator-wrapper").style.visibility = "visible"
-	var probabilitySuccess = confrontDiceSuccess(attackDice, numAttackDice, createAttackSuccessMatrix(),defenceDice,numDefenceDice,createDefenseSuccessMatrix());
+	var probabilitySuccess = confrontDiceSuccess(attackDice, numAttackDice, createAttackSuccessMatrix(), defenceDice, numDefenceDice, createDefenseSuccessMatrix());
 	probabilitySuccess = probabilitySuccess * 100;
-	document.getElementById("calculator-result").innerHTML = Math.round(probabilitySuccess*100)/100 + " %";
+	document.getElementById("calculator-result").innerHTML = Math.round(probabilitySuccess * 100) / 100 + " %";
 }
