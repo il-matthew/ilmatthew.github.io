@@ -45,7 +45,7 @@
 					<h3>N° of attack dices
 						<p id="selectedDiceAttack"></p>
 					</h3>
-					<input id="numAttackDice" data-slider-id='numAttackDiceSlider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value="2" />
+					<input type="text" id="numAttackDiceSlider" name="numAttackDiceSlider" data-provide="slider" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value="2">
 				</div>
 				<div class="cleave">
 					<p>The attacker has cleave?</p>
@@ -53,7 +53,7 @@
 				</div>
 			</div>
 			<div id="defence" class="row">
-				<h2>Defence</h2>
+				<h2>DEFENCE</h2>
 				<div class="defenceButton">
 
 					<div class="btn-group">
@@ -61,7 +61,7 @@
 						<button type="button" class="btn btn-primary" onclick="setDefenceDodge()" id="defencetypedodge"><img src="img/dodge.png"></img></button>
 					</div>
 				</div>
-
+				<input id="ex8" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
 				<div class="slidecontainer">
 					<h3>N° of defence dices</h3>
 					<input type="range" min="1" max="3" value="1" step="1" class="slider" id="numDefenceDice">

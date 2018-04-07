@@ -1,3 +1,7 @@
+var attackSlider = new Slider("#numAttackDiceSlider", {
+		tooltip: 'always'
+});
+
 function setCleave() {
 	var cleaveCheckbox = document.getElementById("hasCleaveCheckbox");
 
@@ -101,11 +105,11 @@ function getDefenceType(){
 
 var numAttackDiceSelector = document.getElementById("numAttackDice");
 var numAttackDiceOutputSelector = document.getElementById("selectedDiceAttack");
-
+/*
 var slider = new Slider("#numAttackDice", {
 	tooltip: 'always'
 });
-
+*/
 
 
 function initialSetting() {
@@ -119,12 +123,6 @@ function initialSetting() {
 	document.getElementById("nonesupport").checked = true;
 	noneSupport();
 
-	numAttackDiceOutputSelector.innerHTML = numAttackDiceSelector;
-
-	numAttackDiceSelector.addEventListener("change", function() {
-		numAttackDiceOutputSelector.innerHTML = numAttackDiceSelector.value;
-	}, false);
-
 	//hide the p for the result
 	//document.getElementById("calculator-wrapper").style.visibility = "hidden"
 }
@@ -137,7 +135,7 @@ function resultWriter() {
 	//attackType = getAttackType();
 	console.log(attackType);
 	//defenceDice = getDefenceType();
-	numAttackDice = document.getElementById("numAttackDice").value;
+	numAttackDice = ;
 	numDefenceDice = document.getElementById("numDefenceDice").value;
 	document.getElementById("calculator-wrapper").style.visibility = "visible"
 	var probabilitySuccess = confrontDiceSuccess(attackDice, numAttackDice, createAttackSuccessMatrix(), defenceDice, numDefenceDice, createDefenseSuccessMatrix());
