@@ -22,18 +22,26 @@ function setGuard() {
 
 function setAttackSmash() {
 	attackType = "smash";
+	document.getElementById("attacktypesmash").className = "btn btn-primary active";
+	document.getElementById("attacktypefury").className = "btn btn-primary";
 }
 
 function setAttackFury() {
 	attackType = "fury";
+	document.getElementById("attacktypesmash").className = "btn btn-primary";
+	document.getElementById("attacktypefury").className = "btn btn-primary active";
 }
 
 function setDefenceBlock() {
 	defenceType = "block";
+	document.getElementById("defencetypeblock").className = "btn btn-primary active";
+	document.getElementById("defencetypedodge").className = "btn btn-primary";
 }
 
 function setDefenceDodge() {
 	defenceType = "dodge";
+	document.getElementById("defencetypeblock").className = "btn btn-primary";
+	document.getElementById("defencetypedodge").className = "btn btn-primary active";
 }
 
 function def2Support() {
@@ -94,16 +102,17 @@ function getDefenceType(){
 var numAttackDiceSelector = document.getElementById("numAttackDice");
 var numAttackDiceOutputSelector = document.getElementById("selectedDiceAttack");
 
+var slider = new Slider("#numAttackDice", {
+	tooltip: 'always'
+});
 
 
 
 function initialSetting() {
 	//set the attack as smash
-	document.getElementById("attacktypesmash").checked = true;
 	setAttackSmash();
 
 	//set the defence as block
-	document.getElementById("defencetypeblock").checked = true;
 	setDefenceBlock();
 
 	//set none support

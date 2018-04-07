@@ -6,8 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Underworld Shadespire Dice Calculator</title>
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Droid+Serif" />
+	<!-- boostrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- bootstrap slider-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.js"></script>
+
 
 	<script type='text/javascript' src="rangeslider.js"></script>
 	<script type='text/javascript' src="calculator.js"></script>
@@ -22,94 +29,78 @@
 
 	</div>
 	<div class="container">
+		<div class="col-sm-offset-4 col-sm-4">
 
+			<div id="attack" class="row">
+				<h2>ATTACK</h2>
 
-		<div id="attack" class="row">
-			<h2>Attack Properties</h2>
-			<h3>Type of attack</h3>
-			<div class="attackButton">
-				<div class="btn-group" role="group" aria-label="...">
-					<button type="button" class="btn btn-primary">smash<img src="img/hammer.png"></img></button>
-					<button type="button" class="btn btn-primary">fury<img src="img/sword.png"></img></button>
-					
+				<div class="attackButton">
+
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary active" onclick="setAttackSmash()" id="attacktypesmash"><img src="img/hammer.png"></img></button>
+						<button type="button" class="btn btn-primary" onclick="setAttackFury()" id="attacktypefury"><img src="img/sword.png"></img></button>
+					</div>
 				</div>
-				
-				<form>
-					<input type="radio" name="attacktypecheckbox" value="smash" onclick="setAttackSmash()" id="attacktypesmash">smash<img src="img/hammer.png"></img>
-					</input>
-					<input type="radio" name="attacktypecheckbox" value="fury" onclick="setAttackFury()" id="attacktypefury">fury<img src="img/sword.png"></img>
-					</input>
-				</form>
-			</div>
-			<div class="slidecontainer">
-				<h3>N° of attack dices
-					<p id="selectedDiceAttack"></p>
-				</h3>
-				<input type="range" min="1" max="6" value="2" step="1" class="slider" id="numAttackDice">
-				<ul class="range-labels">
-					<li>1</li>
-					<li>2</li>
-					<li>3</li>
-					<li>4</li>
-					<li>5</li>
-					<li>6</li>
-				</ul>
-			</div>
-			<div class="cleave">
-				<p>The attacker has cleave?</p>
-				<input type="checkbox" name="hasCleave" onclick="setCleave()" id="hasCleaveCheckbox">
-			</div>
-		</div>
-		<div id="defence" class="row">
-			<h2>Defence Properties</h2>
-			<h3>Type of defence</h3>
-			<div class="defenceButton">
-				<form>
-					<input type="radio" name="defencetypecheckbox" value="block" onclick="setDefenceBlock()" id="defencetypeblock">block<img src="img/shield.png"></img>
-					</input>
-					<input type="radio" name="defencetypecheckbox" value="dodge" onclick="setDefenceDodge()" id="defencetypedodge">dodge<img src="img/dodge.png"></img>
-					</input>
-				</form>
-			</div>
-			<div class="slidecontainer">
-				<h3>N° of defence dices</h3>
-				<input type="range" min="1" max="3" value="1" step="1" class="slider" id="numDefenceDice">
-				<ul class="range-labels">
-					<li>1</li>
-					<li>2</li>
-					<li>3</li>
-				</ul>
-			</div>
-			<div class="onGuard">
-				<p>The defender is on Guard?</p>
-				<input type="checkbox" name="onGuard" onclick="setGuard()" id="onGuardCheckbox">
-			</div>
-		</div>
-
-
-
-		<div id="support" class="row">
-			<h2>Support Properties</h2>
-			<div class="range-slider">
-				<form>
-					<input type="radio" name="supportradio" id="def2support" onclick="att2Support()"><img src="img/double-support.png" style="padding-left: 10px;padding-right: 10px;"><span id="support-label">2 Support</span></input>
-					<input type="radio" name="supportradio" id="def1support" onclick="att1Support()"><img src="img/single-support.png" style="padding-left: 10px;padding-right: 10px;"><span id="support-label">1 Support</span></input>
-					<input type="radio" name="supportradio" id="nonesupport" onclick="noneSupport()">None</input>
-					<input type="radio" name="supportradio" id="attack1support" onclick="def1Support()"><span id="support-label">1 Support</span><img src="img/single-support.png" style="transform: rotate(180deg);padding-left: 10px;padding-right: 10px;"></input>
-					<input type="radio" name="supportradio" id="attack1support" onclick="def2Support()"><span id="support-label">2 Support</span><img src="img/double-support.png" style="padding-left: 10px;padding-right: 10px;"></input>
-				</form>
-				<div>
-					<p style="text-align: left;text-decoration: underline;">Attack<span style="float: right">Defence</span></p>
-
+				<div class="slidecontainer">
+					<h3>N° of attack dices
+						<p id="selectedDiceAttack"></p>
+					</h3>
+					<input id="numAttackDice" data-slider-id='numAttackDiceSlider' type="text" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value="2" />
+				</div>
+				<div class="cleave">
+					<p>The attacker has cleave?</p>
+					<input type="checkbox" name="hasCleave" onclick="setCleave()" id="hasCleaveCheckbox">
 				</div>
 			</div>
-		</div>
-		<div id="calculator" class="row">
-			<h2>Probability of Success</h2>
-			<button id="calculator-button" onclick="resultWriter()">Calculate!</button>
-			<p id="calculator-wrapper">Probability to succeed with the attack is: <span id="calculator-result"></span></p>
-		</div>
+			<div id="defence" class="row">
+				<h2>Defence</h2>
+				<div class="defenceButton">
 
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary active" onclick="setDefenceBlock()" id="defencetypeblock"><img src="img/shield.png"></img></button>
+						<button type="button" class="btn btn-primary" onclick="setDefenceDodge()" id="defencetypedodge"><img src="img/dodge.png"></img></button>
+					</div>
+				</div>
+
+				<div class="slidecontainer">
+					<h3>N° of defence dices</h3>
+					<input type="range" min="1" max="3" value="1" step="1" class="slider" id="numDefenceDice">
+					<ul class="range-labels">
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+				</div>
+				<div class="onGuard">
+					<p>The defender is on Guard?</p>
+					<input type="checkbox" name="onGuard" onclick="setGuard()" id="onGuardCheckbox">
+				</div>
+			</div>
+
+
+
+			<div id="support" class="row">
+				<h2>Support Properties</h2>
+				<div class="range-slider">
+					<form>
+						<input type="radio" name="supportradio" id="def2support" onclick="att2Support()"><img src="img/double-support.png" style="padding-left: 10px;padding-right: 10px;"><span id="support-label">2 Support</span></input>
+						<input type="radio" name="supportradio" id="def1support" onclick="att1Support()"><img src="img/single-support.png" style="padding-left: 10px;padding-right: 10px;"><span id="support-label">1 Support</span></input>
+						<input type="radio" name="supportradio" id="nonesupport" onclick="noneSupport()">None</input>
+						<input type="radio" name="supportradio" id="attack1support" onclick="def1Support()"><span id="support-label">1 Support</span><img src="img/single-support.png" style="transform: rotate(180deg);padding-left: 10px;padding-right: 10px;"></input>
+						<input type="radio" name="supportradio" id="attack1support" onclick="def2Support()"><span id="support-label">2 Support</span><img src="img/double-support.png" style="padding-left: 10px;padding-right: 10px;"></input>
+					</form>
+					<div>
+						<p style="text-align: left;text-decoration: underline;">Attack<span style="float: right">Defence</span></p>
+
+					</div>
+				</div>
+			</div>
+			<div id="calculator" class="row">
+				<h2>Probability of Success</h2>
+				<button id="calculator-button" onclick="resultWriter()">Calculate!</button>
+				<p id="calculator-wrapper">Probability to succeed with the attack is: <span id="calculator-result"></span></p>
+			</div>
+		</div>
 	</div>
 
 </body>
