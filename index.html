@@ -7,15 +7,15 @@
 	<title>Underworld Shadespire Dice Calculator</title>
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Droid+Serif" />
 	<link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
+
 	<!-- boostrap-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<!-- bootstrap slider-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
 
+	<!-- own script-->
 	<script type='text/javascript' src="js/calculator.js"></script>
 	<script type="text/javascript" src="js/navigationScript.js"></script>
 	<script type="text/javascript" src="js/gtag.js"></script>
@@ -26,17 +26,6 @@
 
 
 		}, false);
-/*
-		$(function() {
-			$('#attacktypesmash').on('change', function(event) {
-				setAttackSmash();
-			});
-
-			$('#attacktypefury').on('click', function(event) {
-				setAttackFury();
-			});
-		});
-		*/
 	</script>
 </head>
 
@@ -64,10 +53,9 @@
 					</div>
 				</div>
 				<div>
-					<h3>N° of attack dices
-						<p id="selectedDiceAttack"></p>
-					</h3>
-					<input id="numAttackDiceSlider" type="text" data-slider-ticks="[1, 2, 3, 4, 5]" data-slider-ticks-labels="['1', '2', '3', '4', '5', '6']" data-slider-value="2" />
+					<h3>N° of attack dices</h3>
+					<input id="ex13" type="text" data-slider-ticks="[0, 100, 200, 300, 400]" data-slider-ticks-snap-bounds="30" data-slider-ticks-labels='["$0", "$100", "$200", "$300", "$400"]'/>
+
 				</div>
 				<div class="cleave">
 					<p>The attacker has cleave?</p>
