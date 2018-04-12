@@ -6,20 +6,37 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Underworld Shadespire Dice Calculator</title>
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Droid+Serif" />
+	<link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
 	<!-- boostrap-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<!-- bootstrap slider-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.0/css/bootstrap-slider.min.css" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.0/bootstrap-slider.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
 
 	<script type='text/javascript' src="js/calculator.js"></script>
 	<script type="text/javascript" src="js/navigationScript.js"></script>
 	<script type="text/javascript" src="js/gtag.js"></script>
 	<script type="text/javascript">
-		window.addEventListener("load", initialSetting());
+		window.addEventListener("load", function() {
+			initialSetting();
+
+
+
+		}, false);
+/*
+		$(function() {
+			$('#attacktypesmash').on('change', function(event) {
+				setAttackSmash();
+			});
+
+			$('#attacktypefury').on('click', function(event) {
+				setAttackFury();
+			});
+		});
+		*/
 	</script>
 </head>
 
@@ -32,42 +49,41 @@
 	<div class="container">
 		<div class="col-sm-offset-4 col-sm-4" align="center">
 
-			<div id="attack" class="row">
+			<div class="row">
 				<h2>ATTACK</h2>
 
 				<div class="attackButton">
 
 					<div class="btn" data-toggle="buttons">
 						<label class="btn btn-primary active">
-							<input type="radio" name="smash" id="attacktypesmash" autocomplete="off" checked onclick="setAttackSmash()"> <img src="img/hammer.png"></img>
+							<input type="radio" name="smash" id="attacktypesmash" autocomplete="off" checked onchange = "setAttackSmash()"> <img src="img/hammer.png"></img>
   						</label>
 						<label class="btn btn-primary">
-						  <input type="radio" name="fury" id="attacktypefury" autocomplete="off" onclick="setAttackFury()"> <img src="img/sword.png"></img>
+						  <input type="radio" name="fury" id="attacktypefury" autocomplete="off" onchange="setAttackFury()"> <img src="img/sword.png"></img>
 						</label>
 					</div>
 				</div>
-				<div class="slidecontainer">
+				<div>
 					<h3>N° of attack dices
 						<p id="selectedDiceAttack"></p>
 					</h3>
-					<!--<input type="text" id="numAttackDiceSlider" name="numAttackDiceSlider" data-provide="slider" data-slider-min="1" data-slider-max="6" data-slider-step="1" data-slider-value="2">-->
-					  <input id="numAttackDiceSlider" type="text" data-slider-ticks="[1, 2, 3, 4, 5]" data-slider-ticks-labels="['1', '2', '3', '4', '5', '6']" data-slider-value="2"/>
+					<input id="numAttackDiceSlider" type="text" data-slider-ticks="[1, 2, 3, 4, 5]" data-slider-ticks-labels="['1', '2', '3', '4', '5', '6']" data-slider-value="2" />
 				</div>
 				<div class="cleave">
 					<p>The attacker has cleave?</p>
 					<input type="checkbox" name="hasCleave" onclick="setCleave()" id="hasCleaveCheckbox">
 				</div>
 			</div>
-			<div id="defence" class="row">
+			<div class="row">
 				<h2>DEFENCE</h2>
 				<div class="btn" data-toggle="buttons">
-						<label class="btn btn-primary active">
-							<input type="radio" name="smash" id="defencetypeblock" autocomplete="off" checked onclick="setDefenceBlock()"> <img src="img/shield.png"></img>
+					<label class="btn btn-primary active">
+							<input type="radio" name="block" id="defencetypeblock" autocomplete="off" checked onchange="setDefenceBlock()"> <img src="img/shield.png"></img>
   						</label>
-						<label class="btn btn-primary">
-						  <input type="radio" name="fury" id="defencetypedodge" autocomplete="off" onclick="setDefenceDodge()"> <img src="img/dodge.png"></img>
+					<label class="btn btn-primary">
+						  <input type="radio" name="dodge" id="defencetypedodge" autocomplete="off" onchange="setDefenceDodge()"> <img src="img/dodge.png"></img>
 						</label>
-					</div>
+				</div>
 
 
 				<div class="slidecontainer">
@@ -82,7 +98,7 @@
 
 
 
-			<div id="support" class="row">
+			<div class="row">
 				<h2>SUPPORT</h2>
 				<div class="range-slider">
 					<div class="btn">

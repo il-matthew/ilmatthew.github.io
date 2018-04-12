@@ -134,14 +134,14 @@ function initialSetting() {
 	noneSupport();
 
 	//hide the p for the result
-	//document.getElementById("calculator-wrapper").style.visibility = "hidden"
+	document.getElementById("calculator-wrapper").style.visibility = "hidden"
 }
 
 function resultWriter() {
 	//attackType = getAttackType();
 	console.log(attackType);
 	//defenceDice = getDefenceType();
-	numAttackDice = ;
+	numAttackDice = 2;
 	numDefenceDice = document.getElementById("numDefenceDice").value;
 	document.getElementById("calculator-wrapper").style.visibility = "visible"
 	var probabilitySuccess = confrontDiceSuccess(attackDice, numAttackDice, createAttackSuccessMatrix(), defenceDice, numDefenceDice, createDefenseSuccessMatrix());
