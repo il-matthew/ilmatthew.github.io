@@ -46,9 +46,11 @@
 					</div>
 
 					<div class="cleave">
-						<p>The attacker has cleave?</p>
-						
-						<input type="checkbox" name="hasCleave" onclick="setCleave()" id="hasCleaveCheckbox">
+						<label class="btn btn-primary" id="cleaveButton">
+							CLEAVE?
+							<input type="checkbox" name="hasCleave" onclick="setCleave()" id="hasCleaveCheckbox">
+							
+						</label>
 					</div>
 				</div>
 				<div class="row">
@@ -64,13 +66,15 @@
 
 					<div class="slidecontainer">
 						<h3 style="text-align: left;">N° of defence dices:<span id="numberdefencedices" style="float: right;"></span></h3>
-						<h3>N° of defence dices</h3>
 						<input type="range" min="1" max="4" value="1" class="slider" id="defencesliderrange">
 						<p style="text-align: left;">1<span style="float: right;">4</span></p>
 					</div>
 					<div class="onGuard">
-						<p>The defender is on Guard?</p>
-						<input type="checkbox" name="onGuard" onclick="setGuard()" id="onGuardCheckbox">
+						<label class="btn btn-primary" id="guardButton">
+							GUARD?
+							<input type="checkbox" name="onGuard" onclick="setGuard()" id="onGuardCheckbox">
+						</label>
+						
 					</div>
 				</div>
 

@@ -50,11 +50,11 @@ function def2Support() {
 	defenceSupport1 = true;
 	attackSupport2 = false;
 	attackSupport1 = false;
-	document.getElementById("attack2support").className = "btn btn-primary active";
+	document.getElementById("attack2support").className = "btn btn-primary";
 	document.getElementById("attack1support").className = "btn btn-primary";
 	document.getElementById("nonesupport").className = "btn btn-primary";
 	document.getElementById("def1support").className = "btn btn-primary";
-	document.getElementById("def2support").className = "btn btn-primary";
+	document.getElementById("def2support").className = "btn btn-primary active";
 };
 
 function def1Support() {
@@ -63,9 +63,9 @@ function def1Support() {
 	attackSupport2 = false;
 	attackSupport1 = false;
 	document.getElementById("attack2support").className = "btn btn-primary";
-	document.getElementById("attack1support").className = "btn btn-primary active";
+	document.getElementById("attack1support").className = "btn btn-primary";
 	document.getElementById("nonesupport").className = "btn btn-primary";
-	document.getElementById("def1support").className = "btn btn-primary";
+	document.getElementById("def1support").className = "btn btn-primary active";
 	document.getElementById("def2support").className = "btn btn-primary";
 };
 
@@ -87,9 +87,9 @@ function att1Support() {
 	attackSupport2 = false;
 	attackSupport1 = true;
 	document.getElementById("attack2support").className = "btn btn-primary";
-	document.getElementById("attack1support").className = "btn btn-primary";
+	document.getElementById("attack1support").className = "btn btn-primary active";
 	document.getElementById("nonesupport").className = "btn btn-primary";
-	document.getElementById("def1support").className = "btn btn-primary active";
+	document.getElementById("def1support").className = "btn btn-primary";
 	document.getElementById("def2support").className = "btn btn-primary";
 };
 
@@ -98,11 +98,11 @@ function att2Support() {
 	defenceSupport1 = false;
 	attackSupport2 = true;
 	attackSupport1 = true;
-	document.getElementById("attack2support").className = "btn btn-primary";
+	document.getElementById("attack2support").className = "btn btn-primary active";
 	document.getElementById("attack1support").className = "btn btn-primary";
 	document.getElementById("nonesupport").className = "btn btn-primary";
 	document.getElementById("def1support").className = "btn btn-primary";
-	document.getElementById("def2support").className = "btn btn-primary active";
+	document.getElementById("def2support").className = "btn btn-primary";
 };
 
 var numAttackDiceSelector = document.getElementById("numAttackDice");
