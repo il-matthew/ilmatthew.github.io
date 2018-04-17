@@ -13,20 +13,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<!-- bootstrap slider-->
-
 	<!-- own script-->
 	<script type='text/javascript' src="js/calculator.js"></script>
 	<script type="text/javascript" src="js/navigationScript.js"></script>
 	<script type="text/javascript" src="js/gtag.js"></script>
-	<script type="text/javascript">
-		window.addEventListener("load", function() {
-			initialSetting();
 
-
-
-		}, false);
-	</script>
 </head>
 
 <body>
@@ -41,74 +32,85 @@
 			<div class="row">
 				<h2>ATTACK</h2>
 
-				<div class="attackButton">
+				<div id="attackButton">
 
 					<div class="btn" data-toggle="buttons">
-						<label class="btn btn-primary active">
-							<input type="radio" name="smash" id="attacktypesmash" autocomplete="off" checked onchange = "setAttackSmash()"> <img src="img/hammer.png"></img>
-  						</label>
-						<label class="btn btn-primary">
-						  <input type="radio" name="fury" id="attacktypefury" autocomplete="off" onchange="setAttackFury()"> <img src="img/sword.png"></img>
-						</label>
+						<button type="button" class="btn btn-primary active" onclick="setAttackSmash()" id="attacktypesmash"><img src="img/hammer.png"></img></button>
+						<button type="button" class="btn btn-primary" onclick="setAttackFury()" id="attacktypefury"><img src="img/sword.png"></button>
 					</div>
 				</div>
 				<div>
-					<h3>N° of attack dices</h3>
-					<input id="ex13" type="text" data-slider-ticks="[0, 100, 200, 300, 400]" data-slider-ticks-snap-bounds="30" data-slider-ticks-labels='["$0", "$100", "$200", "$300", "$400"]'/>
-
-				</div>
-				<div class="cleave">
-					<p>The attacker has cleave?</p>
-					<input type="checkbox" name="hasCleave" onclick="setCleave()" id="hasCleaveCheckbox">
-				</div>
-			</div>
-			<div class="row">
-				<h2>DEFENCE</h2>
-				<div class="btn" data-toggle="buttons">
-					<label class="btn btn-primary active">
-							<input type="radio" name="block" id="defencetypeblock" autocomplete="off" checked onchange="setDefenceBlock()"> <img src="img/shield.png"></img>
-  						</label>
-					<label class="btn btn-primary">
-						  <input type="radio" name="dodge" id="defencetypedodge" autocomplete="off" onchange="setDefenceDodge()"> <img src="img/dodge.png"></img>
-						</label>
-				</div>
-
-
-				<div class="slidecontainer">
-					<h3>N° of defence dices</h3>
-					<input type="text" id="numDefenceDiceSlider" name="numDefenceDiceSlider" data-provide="slider" data-slider-min="1" data-slider-max="4" data-slider-step="1" data-slider-value="2">
-				</div>
-				<div class="onGuard">
-					<p>The defender is on Guard?</p>
-					<input type="checkbox" name="onGuard" onclick="setGuard()" id="onGuardCheckbox">
-				</div>
-			</div>
-
-
-
-			<div class="row">
-				<h2>SUPPORT</h2>
-				<div class="range-slider">
-					<div class="btn">
-						<button type="button" class="btn btn-primary" onclick="att2Support()" id="attack2support"><img src="img/double-support.png"></img></button>
-						<button type="button" class="btn btn-primary" onclick="att1Support()" id="attack1support"><img src="img/single-support.png"></img></button>
-						<button type="button" class="btn btn-primary active" onclick="noneSupport()" id="nonesupport">None</button>
-						<button type="button" class="btn btn-primary" onclick="def1Support()" id="def1support"><img src="img/single-support.png" style="transform: rotate(180deg);"></img></button>
-						<button type="button" class="btn btn-primary" onclick="def2Support()" id="def2support"><img src="img/double-support.png"></img></button>
+					<h3 style="text-align: left;">N° of attack dices:<span id="numberselecteddices" style="text-align: right;"></span></h3>
+					<div class="slidecontainer">
+						<input type="range" min="1" max="6" value="2" class="slider" id="attacksliderrange">
+						<p style="text-align: left;">1<span style="float: right;">6</span></p>
 					</div>
-					<div>
-						<p style="text-align: left;text-decoration: underline;">Attack<span style="float: right">Defence</span></p>
 
+					<div class="cleave">
+						<p>The attacker has cleave?</p>
+						<input type="checkbox" name="hasCleave" onclick="setCleave()" id="hasCleaveCheckbox">
 					</div>
 				</div>
-			</div>
-			<div id="calculator" class="row">
-				<button id="calculator-button" class="btn btn-primary btn-lg" onclick="resultWriter()">Calculate!</button>
-				<h1 id="calculator-wrapper"><span id="calculator-result"></span>%</h1>
+				<div class="row">
+					<h2>DEFENCE</h2>
+					<div id="defenceButton">
+
+						<div class="btn" data-toggle="buttons">
+							<button type="button" class="btn btn-primary active" onclick="setDefenceBlock()" id="defencetypeblock"><img src="img/shield.png"></img></button>
+							<button type="button" class="btn btn-primary" onclick="setDefenceDodge()" id="defencetypedodge"><img src="img/dodge.png"></button>
+						</div>
+					</div>
+
+
+					<div class="slidecontainer">
+						<h3>N° of defence dices</h3>
+						<input type="text" id="numDefenceDiceSlider" name="numDefenceDiceSlider" data-provide="slider" data-slider-min="1" data-slider-max="4" data-slider-step="1" data-slider-value="2">
+					</div>
+					<div class="onGuard">
+						<p>The defender is on Guard?</p>
+						<input type="checkbox" name="onGuard" onclick="setGuard()" id="onGuardCheckbox">
+					</div>
+				</div>
+
+
+
+				<div class="row">
+					<h2>SUPPORT</h2>
+					<div class="range-slider">
+						<div class="btn">
+							<button type="button" class="btn btn-primary" onclick="att2Support()" id="attack2support"><img src="img/double-support.png"></img></button>
+							<button type="button" class="btn btn-primary" onclick="att1Support()" id="attack1support"><img src="img/single-support.png"></img></button>
+							<button type="button" class="btn btn-primary active" onclick="noneSupport()" id="nonesupport">None</button>
+							<button type="button" class="btn btn-primary" onclick="def1Support()" id="def1support"><img src="img/single-support.png" style="transform: rotate(180deg);"></img></button>
+							<button type="button" class="btn btn-primary" onclick="def2Support()" id="def2support"><img src="img/double-support.png"></img></button>
+						</div>
+						<div>
+							<p style="text-align: left;text-decoration: underline;">Attack<span style="float: right;text-decoration: underline;">Defence</span></p>
+
+						</div>
+					</div>
+				</div>
+				<div id="calculator" class="row">
+					<button id="calculator-button" class="btn btn-primary btn-lg btn-block" onclick="resultWriter()">Calculate!</button>
+					<h1 id="calculator-wrapper"><span id="calculator-result"></span>%</h1>
+				</div>
 			</div>
 		</div>
-	</div>
+		<script type="text/javascript">
+			var slider = document.getElementById("attacksliderrange");
+			var output = document.getElementById("numberselecteddices");
+			output.innerHTML = slider.value;
 
+			slider.oninput = function() {
+				output.innerHTML = this.value;
+			}
+
+			window.addEventListener("load", function() {
+				initialSetting();
+
+			}, false);
+		</script>
+		</head>
 </body>
 
 </html>
