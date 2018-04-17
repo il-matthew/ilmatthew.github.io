@@ -37,3 +37,7 @@ body {
     background: #4CAF50;
     cursor: pointer;
 }
+
+.btn-primary:active{
+    .btn-outline-primary;
+}

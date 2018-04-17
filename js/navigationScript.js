@@ -8,7 +8,7 @@ function setCleave() {
 	else {
 		attackHasCleave = false;
 	}
-}
+};
 
 function setGuard() {
 	var guardCheckbox = document.getElementById("onGuardCheckbox");
@@ -19,13 +19,13 @@ function setGuard() {
 	else {
 		defenceIsOnGuard = false;
 	}
-}
+};
 
 function setAttackSmash() {
 	attackType = "smash";
 	document.getElementById("attacktypesmash").className = "btn btn-primary active";
 	document.getElementById("attacktypefury").className = "btn btn-primary";
-}
+};
 
 function setAttackFury() {
 	attackType = "fury";
@@ -37,13 +37,13 @@ function setDefenceBlock() {
 	defenceType = "block";
 	document.getElementById("defencetypeblock").className = "btn btn-primary active";
 	document.getElementById("defencetypedodge").className = "btn btn-primary";
-}
+};
 
 function setDefenceDodge() {
 	defenceType = "dodge";
 	document.getElementById("defencetypeblock").className = "btn btn-primary";
 	document.getElementById("defencetypedodge").className = "btn btn-primary active";
-}
+};
 
 function def2Support() {
 	defenceSupport2 = true;
@@ -55,7 +55,7 @@ function def2Support() {
 	document.getElementById("nonesupport").className = "btn btn-primary";
 	document.getElementById("def1support").className = "btn btn-primary";
 	document.getElementById("def2support").className = "btn btn-primary";
-}
+};
 
 function def1Support() {
 	defenceSupport2 = false;
@@ -67,7 +67,7 @@ function def1Support() {
 	document.getElementById("nonesupport").className = "btn btn-primary";
 	document.getElementById("def1support").className = "btn btn-primary";
 	document.getElementById("def2support").className = "btn btn-primary";
-}
+};
 
 function noneSupport() {
 	defenceSupport2 = false;
@@ -79,7 +79,7 @@ function noneSupport() {
 	document.getElementById("nonesupport").className = "btn btn-primary active";
 	document.getElementById("def1support").className = "btn btn-primary";
 	document.getElementById("def2support").className = "btn btn-primary";
-}
+};
 
 function att1Support() {
 	defenceSupport2 = false;
@@ -91,7 +91,7 @@ function att1Support() {
 	document.getElementById("nonesupport").className = "btn btn-primary";
 	document.getElementById("def1support").className = "btn btn-primary active";
 	document.getElementById("def2support").className = "btn btn-primary";
-}
+};
 
 function att2Support() {
 	defenceSupport2 = false;
@@ -103,7 +103,7 @@ function att2Support() {
 	document.getElementById("nonesupport").className = "btn btn-primary";
 	document.getElementById("def1support").className = "btn btn-primary";
 	document.getElementById("def2support").className = "btn btn-primary active";
-}
+};
 
 var numAttackDiceSelector = document.getElementById("numAttackDice");
 var numAttackDiceOutputSelector = document.getElementById("selectedDiceAttack");
@@ -124,18 +124,12 @@ function initialSetting() {
 	//set none support
 	noneSupport();
 
-	//hide the p for the result
-	document.getElementById("calculator-wrapper").style.visibility = "hidden"
-}
+};
 
 function resultWriter() {
-	//attackType = getAttackType();
-	console.log(attackType);
-	//defenceDice = getDefenceType();
-	numAttackDice = 2;
-	numDefenceDice = document.getElementById("numDefenceDice").value;
-	document.getElementById("calculator-wrapper").style.visibility = "visible"
+	numAttackDice = document.getElementById("attacksliderrange").value;
+	numDefenceDice = document.getElementById("defencesliderrange").value;
 	var probabilitySuccess = confrontDiceSuccess(attackDice, numAttackDice, createAttackSuccessMatrix(), defenceDice, numDefenceDice, createDefenseSuccessMatrix());
 	probabilitySuccess = probabilitySuccess * 100;
 	document.getElementById("calculator-result").innerHTML = Math.round(probabilitySuccess * 100) / 100;
-}
+};
