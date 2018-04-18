@@ -1,13 +1,14 @@
 /*loader for the main function*/
-
-#mainloader {
+#loadercontainer{
     position: absolute;
     left: 50%;
     top: 50%;
     z-index: 1;
-    width: 150px;
-    height: 150px;
     margin: -75px 0 0 -75px;
+    text-align: center;
+}
+#mainloader {
+    
     border: 16px solid #f3f3f3;
     border-radius: 50%;
     border-top: 16px solid #3498db;
@@ -37,6 +38,10 @@
 
 #maincontainer {
     display: none;
+}
+
+#maincontainer h1{
+    position:relative;
 }
 
 /*main css*/
@@ -88,4 +93,8 @@ body {
     animation: spin 2s linear infinite;
     width: 10px;
     height: 10px;
+}
+
+.container{
+    .
 }

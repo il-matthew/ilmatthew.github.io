@@ -1,5 +1,5 @@
 function hideLoader(){
-	document.getElementById("mainloader").style.display = "none";
+	document.getElementById("loadercontainer").style.display = "none";
 	document.getElementById("maincontainer").style.display = "block";
 };
 
