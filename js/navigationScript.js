@@ -133,8 +133,11 @@ function initialSetting() {
 function resultWriter() {
 	numAttackDice = document.getElementById("attacksliderrange").value;
 	numDefenceDice = document.getElementById("defencesliderrange").value;
-	
+	var result = document.getElementById("calculator-result");
+	result.innerHTML = '';
+	result.classList.add("resultloader");
 	var probabilitySuccess = confrontDiceSuccess(attackDice, numAttackDice, createAttackSuccessMatrix(), defenceDice, numDefenceDice, createDefenseSuccessMatrix());
 	probabilitySuccess = probabilitySuccess * 100;
-	document.getElementById("calculator-result").innerHTML = Math.round(probabilitySuccess * 100) / 100;
+	result.classList.remove("resultloader");
+	result.innerHTML = Math.round(probabilitySuccess * 100) / 100;
 };
