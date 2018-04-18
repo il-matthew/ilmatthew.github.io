@@ -1,3 +1,7 @@
+function hideLoader(){
+	document.getElementById("mainloader").style.display = "none";
+	document.getElementById("maincontainer").style.display = "block";
+};
 
 function setCleave() {
 	var cleaveCheckbox = document.getElementById("hasCleaveCheckbox");
@@ -123,12 +127,13 @@ function initialSetting() {
 
 	//set none support
 	noneSupport();
-
+	
 };
 
 function resultWriter() {
 	numAttackDice = document.getElementById("attacksliderrange").value;
 	numDefenceDice = document.getElementById("defencesliderrange").value;
+	
 	var probabilitySuccess = confrontDiceSuccess(attackDice, numAttackDice, createAttackSuccessMatrix(), defenceDice, numDefenceDice, createDefenseSuccessMatrix());
 	probabilitySuccess = probabilitySuccess * 100;
 	document.getElementById("calculator-result").innerHTML = Math.round(probabilitySuccess * 100) / 100;
