@@ -103,9 +103,10 @@ input[type=checkbox] {
     margin-bottom: 15px;
 }
 
+/*
 #guardButton:active{
     background-color: transparent !important;
-}
+}*/
 
 #guardButton:focus{
     background-color: transparent !important;
