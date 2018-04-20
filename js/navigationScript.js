@@ -8,9 +8,11 @@ function setCleave() {
 
 	if (cleaveCheckbox.checked == true) {
 		attackHasCleave = true;
+		document.getElementById("cleaveicon").className = "fas fa-check";
 	}
 	else {
 		attackHasCleave = false;
+		document.getElementById("cleaveicon").className = "fas fa-ban";
 	}
 };
 
@@ -19,9 +21,11 @@ function setGuard() {
 
 	if (guardCheckbox.checked == true) {
 		defenceIsOnGuard = true;
+		document.getElementById("guardicon").className = "fas fa-check";
 	}
 	else {
 		defenceIsOnGuard = false;
+		document.getElementById("guardicon").className = "fas fa-ban";
 	}
 };
 
@@ -35,6 +39,7 @@ function setAttackFury() {
 	attackType = "fury";
 	document.getElementById("attacktypesmash").className = "btn btn-primary";
 	document.getElementById("attacktypefury").className = "btn btn-primary active";
+	$('attacktypefury').button('toggle');
 }
 
 function setDefenceBlock() {
