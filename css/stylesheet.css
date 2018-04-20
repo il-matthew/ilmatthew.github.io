@@ -103,6 +103,9 @@ input[type=checkbox] {
     margin-bottom: 15px;
 }
 
+#guardButton:active{
+    background-color: transparent !important;
+}
 /*
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color:  #E25A02 !important;
