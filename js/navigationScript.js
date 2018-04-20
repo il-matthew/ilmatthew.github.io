@@ -63,11 +63,11 @@ function def2Support() {
 	defenceSupport1 = true;
 	attackSupport2 = false;
 	attackSupport1 = false;
-	document.getElementById("attack2support").className = "btn btn-primary";
-	document.getElementById("attack1support").className = "btn btn-primary";
-	document.getElementById("nonesupport").className = "btn btn-primary";
-	document.getElementById("def1support").className = "btn btn-primary";
-	document.getElementById("def2support").className = "btn btn-primary active";
+	document.getElementById("attack2support").className = "btn btn-outline-primary";
+	document.getElementById("attack1support").className = "btn btn-outline-primary";
+	document.getElementById("nonesupport").className = "btn btn-outline-primary";
+	document.getElementById("def1support").className = "btn btn-outline-primary";
+	document.getElementById("def2support").className = "btn btn-outline-primary active";
 };
 
 function def1Support() {
@@ -75,11 +75,11 @@ function def1Support() {
 	defenceSupport1 = true;
 	attackSupport2 = false;
 	attackSupport1 = false;
-	document.getElementById("attack2support").className = "btn btn-primary";
-	document.getElementById("attack1support").className = "btn btn-primary";
-	document.getElementById("nonesupport").className = "btn btn-primary";
-	document.getElementById("def1support").className = "btn btn-primary active";
-	document.getElementById("def2support").className = "btn btn-primary";
+	document.getElementById("attack2support").className = "btnbtn-outline-primary";
+	document.getElementById("attack1support").className = "btnbtn-outline-primary";
+	document.getElementById("nonesupport").className = "btnbtn-outline-primary";
+	document.getElementById("def1support").className = "btnbtn-outline-primary active";
+	document.getElementById("def2support").className = "btnbtn-outline-primary";
 };
 
 function noneSupport() {
@@ -87,11 +87,11 @@ function noneSupport() {
 	defenceSupport1 = false;
 	attackSupport2 = false;
 	attackSupport1 = false;
-	document.getElementById("attack2support").className = "btn btn-primary";
-	document.getElementById("attack1support").className = "btn btn-primary";
-	document.getElementById("nonesupport").className = "btn btn-primary active";
-	document.getElementById("def1support").className = "btn btn-primary";
-	document.getElementById("def2support").className = "btn btn-primary";
+	document.getElementById("attack2support").className = "btnbtn-outline-primary";
+	document.getElementById("attack1support").className = "btnbtn-outline-primary";
+	document.getElementById("nonesupport").className = "btnbtn-outline-primary active";
+	document.getElementById("def1support").className = "btnbtn-outline-primary";
+	document.getElementById("def2support").className = "btnbtn-outline-primary";
 };
 
 function att1Support() {
@@ -99,11 +99,11 @@ function att1Support() {
 	defenceSupport1 = false;
 	attackSupport2 = false;
 	attackSupport1 = true;
-	document.getElementById("attack2support").className = "btn btn-primary";
-	document.getElementById("attack1support").className = "btn btn-primary active";
-	document.getElementById("nonesupport").className = "btn btn-primary";
-	document.getElementById("def1support").className = "btn btn-primary";
-	document.getElementById("def2support").className = "btn btn-primary";
+	document.getElementById("attack2support").className = "btnbtn-outline-primary";
+	document.getElementById("attack1support").className = "btnbtn-outline-primary active";
+	document.getElementById("nonesupport").className = "btnbtn-outline-primary";
+	document.getElementById("def1support").className = "btnbtn-outline-primary";
+	document.getElementById("def2support").className = "btnbtn-outline-primary";
 };
 
 function att2Support() {
@@ -111,11 +111,11 @@ function att2Support() {
 	defenceSupport1 = false;
 	attackSupport2 = true;
 	attackSupport1 = true;
-	document.getElementById("attack2support").className = "btn btn-primary active";
-	document.getElementById("attack1support").className = "btn btn-primary";
-	document.getElementById("nonesupport").className = "btn btn-primary";
-	document.getElementById("def1support").className = "btn btn-primary";
-	document.getElementById("def2support").className = "btn btn-primary";
+	document.getElementById("attack2support").className = "btnbtn-outline-primary active";
+	document.getElementById("attack1support").className = "btnbtn-outline-primary";
+	document.getElementById("nonesupport").className = "btnbtn-outline-primary";
+	document.getElementById("def1support").className = "btnbtn-outline-primary";
+	document.getElementById("def2support").className = "btnbtn-outline-primary";
 };
 
 var numAttackDiceSelector = document.getElementById("numAttackDice");
