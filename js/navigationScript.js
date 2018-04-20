@@ -139,10 +139,12 @@ function resultWriter() {
 	numAttackDice = document.getElementById("attacksliderrange").value;
 	numDefenceDice = document.getElementById("defencesliderrange").value;
 	var result = document.getElementById("calculator-result");
-	result.innerHTML = '';
-	result.classList.add("resultloader");
+	var spinner = document.getElementById("resultloader");
+	result.innerHTML = '--';
+	spinner.className = "fa fa-spinner fa-spin";
 	var probabilitySuccess = confrontDiceSuccess(attackDice, numAttackDice, createAttackSuccessMatrix(), defenceDice, numDefenceDice, createDefenseSuccessMatrix());
+	
 	probabilitySuccess = probabilitySuccess * 100;
-	result.classList.remove("resultloader");
+	spinner.className = "fa fa-fw";
 	result.innerHTML = Math.round(probabilitySuccess * 100) / 100;
 };

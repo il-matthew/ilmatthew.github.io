@@ -88,16 +88,6 @@ body {
     cursor: pointer;
 }
 
-.resultloader {
-    z-index: 1;
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #3498db;
-    -webkit-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
-    width: 10px;
-    height: 10px;
-}
 
 /*** custom checkboxes ***/
 
@@ -106,3 +96,6 @@ input[type=checkbox] {
     display: none;
 }
 
+.jumbotron{
+    text-align: center;
+}
