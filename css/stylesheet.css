@@ -99,3 +99,11 @@ input[type=checkbox] {
 .jumbotron{
     text-align: center;
 }
+#attackrow, #defencerow, #supportrow{
+    margin-bottom: 10 px;
+}
+
+/*
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color:  #E25A02 !important;
+}*/

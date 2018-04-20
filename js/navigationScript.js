@@ -9,10 +9,12 @@ function setCleave() {
 	if (cleaveCheckbox.checked == true) {
 		attackHasCleave = true;
 		document.getElementById("cleaveicon").className = "fas fa-check";
+		document.getElementById("cleavebutton").className = "btn btn-outline-primary active";
 	}
 	else {
 		attackHasCleave = false;
 		document.getElementById("cleaveicon").className = "fas fa-ban";
+		document.getElementById("cleavebutton").className = "btn btn-outline-primary";
 	}
 };
 
@@ -22,36 +24,38 @@ function setGuard() {
 	if (guardCheckbox.checked == true) {
 		defenceIsOnGuard = true;
 		document.getElementById("guardicon").className = "fas fa-check";
+		document.getElementById("guardButton").className = "btn btn-outline-primary active";
 	}
 	else {
 		defenceIsOnGuard = false;
 		document.getElementById("guardicon").className = "fas fa-ban";
+		document.getElementById("guardButton").className = "btn btn-outline-primary";
 	}
 };
 
 function setAttackSmash() {
 	attackType = "smash";
-	document.getElementById("attacktypesmash").className = "btn btn-primary active";
-	document.getElementById("attacktypefury").className = "btn btn-primary";
+	document.getElementById("attacktypesmash").className = "btn btn-outline-primary active";
+	document.getElementById("attacktypefury").className = "btn btn-outline-primary";
 };
 
 function setAttackFury() {
 	attackType = "fury";
-	document.getElementById("attacktypesmash").className = "btn btn-primary";
-	document.getElementById("attacktypefury").className = "btn btn-primary active";
+	document.getElementById("attacktypesmash").className = "btn btn-outline-primary";
+	document.getElementById("attacktypefury").className = "btn btn-outline-primary active";
 	$('attacktypefury').button('toggle');
 }
 
 function setDefenceBlock() {
 	defenceType = "block";
-	document.getElementById("defencetypeblock").className = "btn btn-primary active";
-	document.getElementById("defencetypedodge").className = "btn btn-primary";
+	document.getElementById("defencetypeblock").className = "btn btn-outline-primary active";
+	document.getElementById("defencetypedodge").className = "btn btn-outline-primary";
 };
 
 function setDefenceDodge() {
 	defenceType = "dodge";
-	document.getElementById("defencetypeblock").className = "btn btn-primary";
-	document.getElementById("defencetypedodge").className = "btn btn-primary active";
+	document.getElementById("defencetypeblock").className = "btn btn-outline-primary";
+	document.getElementById("defencetypedodge").className = "btn btn-outline-primary active";
 };
 
 function def2Support() {
