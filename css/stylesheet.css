@@ -100,7 +100,7 @@ input[type=checkbox] {
     text-align: center;
 }
 #attackrow, #defencerow, #supportrow{
-    margin-bottom: 10 px;
+    margin-bottom: 15px;
 }
 
 /*
