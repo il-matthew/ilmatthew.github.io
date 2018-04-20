@@ -106,6 +106,10 @@ input[type=checkbox] {
 #guardButton:active{
     background-color: transparent !important;
 }
+
+#guardButton:focus{
+    background-color: transparent !important;
+}
 /*
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color:  #E25A02 !important;
