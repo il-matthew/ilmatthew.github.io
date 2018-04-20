@@ -115,3 +115,8 @@ input[type=checkbox] {
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
     background-color:  #E25A02 !important;
 }*/
+
+img{
+    height: 30px;
+    width: 30px;
+}
